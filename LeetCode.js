@@ -22,19 +22,6 @@ var romanToInt = function(s) {
 };
 
 
-// Length of Last Word -- EASY
-// var lengthOfLastWord = function(s) {
-//   let arr = s.split(" ");
-
-//   for (let i = arr.length-1; i >= 0; i--){
-//     if (arr[i].length > 0) {
-//       return arr[i].length;
-//     }
-//   }
-// };
-// console.log(lengthOfLastWord("   fly me   to   the moon  "));
-
-
 // Longest Common Prefix
 var longestCommonPrefix = function(strs) {
   // Input: strs = ["flower","flow","flight"]
@@ -56,13 +43,6 @@ var longestCommonPrefix = function(strs) {
 };
 // console.log(longestCommonPrefix(["",""]));
 // console.log(longestCommonPrefix(["ab", "a"]));
-
-
-// 168. Excel Sheet Column Title
-var convertToTitle = function(columnNumber) {
-    // 1-26 = A - B
-    // 27-52 = AA - AZ
-};
 
 
 // '' = true
@@ -101,9 +81,66 @@ const validParentheses = (string) => {
 
   return Object.values(resObj).every(val => val === 0);
 }
+// console.log(validParentheses('()')) //true
+// console.log(validParentheses('()[]{}')) //true
+// console.log(validParentheses('(]')) //false
+// console.log(validParentheses('([)]')) //true
+// console.log(validParentheses('()[}')) // false
 
-console.log(validParentheses('()')) //true
-console.log(validParentheses('()[]{}')) //true
-console.log(validParentheses('(]')) //false
-console.log(validParentheses('([)]')) //true
-console.log(validParentheses('()[}')) // false
+
+// 125. Valid Palindrome
+var isPalindrome = function(str) {
+  str = str.toLowerCase().replace(/[^a-z0-9]/gi, '');
+  console.log(str);
+  if (str.length <= 1) return true;
+  for (let i = 0; i < str.length/2; i++) {
+      if (str[i] !== str[str.length-1-i]) return false;
+  }
+  return true;
+};
+// console.log(isPalindrome("ab_a"));
+
+
+// 171. Excel Sheet Column Number
+var titleToNumber = function(columnTitle) {
+  const numValues = {
+      A: 1,
+      B: 2,
+      C: 3,
+      D: 4,
+      E: 5,
+      F: 6,
+      G: 7,
+      H: 8,
+      I: 9,
+      J: 10,
+      K: 11,
+      L: 12,
+      M: 13,
+      N: 14,
+      O: 15,
+      P: 16,
+      Q: 17,
+      R: 18,
+      S: 19,
+      T: 20,
+      U: 21,
+      V: 22,
+      W: 23,
+      X: 24,
+      Y: 25,
+      Z: 26
+  }
+  let length = columnTitle.length
+  if (length === 1) return numValues[columnTitle[0]];
+
+  let num = numValues[columnTitle[length - 1]];
+  console.log("initial num:", num)
+  for (let i = 2; i <= length; i++) {
+      num += ((26^(i-1)) * numValues[columnTitle[length - i]]);
+      console.log("num:", num)
+  }
+
+  return num;
+};
+// console.log(titleToNumber("FXSHRXW")); // 2147483647
