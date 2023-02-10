@@ -171,3 +171,25 @@ var removeDuplicates = function(nums) {
 };
 
 
+// 27. Remove Element
+var removeElement = function(nums, val) {
+  for (let i = 0; i < nums.length; i++) {
+      if (nums[i] === val) {
+          nums.splice(i, 1)
+          i--
+      }
+  }
+  return nums.length;
+};
+
+
+// 35. Search Insert Position
+var searchInsert = function(nums, target) {
+  if (nums[0] > target) return 0;
+  if (nums.includes(target)) return nums.indexOf(target);
+  if (nums[nums.length-1] < target) return nums.length;
+
+  for (let i = 1; i < nums.length; i++) {
+      if (nums[i] > target && nums[i-1] < target) return i;
+  }
+};
