@@ -9,3 +9,17 @@
 // return its index. Otherwise, recursively search either the left or the right
 // half of the array until the target is found or the base case (empty array) is
 // reached.
+
+const bsearch = (sortedArray, target) => {
+  let mp = Math.floor(sortedArray.length/2);
+
+  if (sortedArray[mp] === target) return mp;
+  if (!sortedArray.length) return -1;
+
+  if (target < sortedArray[mp]) {
+    return bsearch(sortedArray.slice(0, mp), target);
+  } else {
+    res = bsearch(sortedArray.slice(mp+1, sortedArray.length), target)
+    return res === -1 ? -1 : res + mp + 1;
+  }
+}

@@ -144,3 +144,30 @@ var titleToNumber = function(columnTitle) {
   return num;
 };
 // console.log(titleToNumber("FXSHRXW")); // 2147483647
+
+
+// 121. Best Time to Buy and Sell Stock
+var maxProfit = function(prices) {
+  let profit = 0;
+  let min = prices[0];
+
+  for (let i = 0; i < prices.length; i++) {
+      if (prices[i] < min) min = prices[i];
+      if (prices[i] - min > profit) profit = prices[i] - min;
+  }
+  return profit;
+};
+
+
+// 26. Remove Duplicates from Sorted Array
+var removeDuplicates = function(nums) {
+  for (let i = 0; i < nums.length - 1; i++) {
+      if (nums[i] === nums[i+1]) {
+          nums.splice(i, 1);
+          i--
+      }
+  }
+  return nums.length;
+};
+
+
