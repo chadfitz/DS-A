@@ -78,8 +78,8 @@ const validParentheses = (string) => {
     '{': '}'
   }
 
-  // let resObj = {}
-  let resObj = new Map();
+  let resObj = {}
+  // let resObj = new Map();
   // O(1) => insertion
   // O(1) => retrieval
   // res.set(key, value)
@@ -102,8 +102,9 @@ const validParentheses = (string) => {
   return Object.values(resObj).every(val => val === 0);
 }
 
-console.log(validParentheses('()')) //true
-console.log(validParentheses('()[]{}')) //true
-console.log(validParentheses('(]')) //false
-console.log(validParentheses('([)]')) //true
-console.log(validParentheses('()[}')) // false
+// console.log(validParentheses('()')) //true
+// console.log(validParentheses('()[]{}')) //true
+// console.log(validParentheses('(]')) //false
+// console.log(validParentheses('([)]')) //true
+// console.log(validParentheses('()[}')) // false
+
