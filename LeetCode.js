@@ -216,10 +216,19 @@ var mySqrt = function(x) {
   if (x === 0) return 0;
   if (x < 4) return 1;
   
-  for (let i = 0; i < x; i++) {
-      if (i * i === x) return i;
-      if ((i + 1) * (i + 1) > x) {
-          return i;
+  let low = 1;
+  let high = Math.ceil(x/2);
+  let mid;
+
+  while (low <= high) {
+      mid = Math.floor((low + high) / 2);
+      if ((mid * mid) < x) {
+          low = mid + 1;
+      } else if ((mid * mid) > x) {
+          high = mid - 1;
+      } else {
+          return mid;
       }
   }
+  return high;
 };
