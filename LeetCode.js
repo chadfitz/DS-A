@@ -210,3 +210,16 @@ var plusOne = function(digits) {
 
   return digits;
 };
+
+// 69. Sqrt(x)
+var mySqrt = function(x) {
+  if (x === 0) return 0;
+  if (x < 4) return 1;
+  
+  for (let i = 0; i < x; i++) {
+      if (i * i === x) return i;
+      if ((i + 1) * (i + 1) > x) {
+          return i;
+      }
+  }
+};
