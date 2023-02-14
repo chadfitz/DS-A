@@ -193,3 +193,20 @@ var searchInsert = function(nums, target) {
       if (nums[i] > target && nums[i-1] < target) return i;
   }
 };
+
+// 66. Plus One
+var plusOne = function(digits) {
+  digits[digits.length - 1] += 1;
+  for (let i = digits.length-1; i >= 0; i--) {
+      if (i === 0 && digits[i] >= 10) {
+          digits[i] = 0;
+          digits.unshift(1);
+      }
+      if (digits[i] >= 10) {
+          digits[i] = 0;
+          digits[i-1] += 1;
+      }
+  }
+
+  return digits;
+};
