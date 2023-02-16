@@ -232,3 +232,32 @@ var mySqrt = function(x) {
   }
   return high;
 };
+
+// 1010. Pairs of Songs With Total Durations Divisible by 60
+var numPairsDivisibleBy60 = function(time) {
+  let count = 0;
+
+  let hash = {0: 0};
+  for (i = 0; i < time.length; i++) {
+      let complement = time[i] % 60;
+      if (time[i] % 60 === 0) {
+          hash[0] += 1;
+      } else {
+          if (hash[60 - complement] !== undefined) {
+              count += 1;
+          } else {
+              hash[complement] = i;
+          }
+      }
+      console.log("time[i]:", time[i])
+      console.log("complement:", complement)
+      console.log("hash:", hash)
+      console.log("count:", count)
+  }
+
+  if (hash[0] > 1) {
+      return count + hash[0];
+  } else {
+      return count;
+  }
+};
