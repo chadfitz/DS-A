@@ -261,3 +261,33 @@ var numPairsDivisibleBy60 = function(time) {
       return count;
   }
 };
+
+//1706. Where Will the Ball Fall
+var findBall = function(grid) {
+  let res = [];
+  let x;
+  let ball
+
+  for (let y = 0; y < grid.length+1; y++) {
+
+      if (x < grid.length - 2 && grid[y][x] === 1 && grid[y][x+1] === -1) {
+          res.push(-1);
+          break;
+      }
+      if (x === 0 && grid[y][x] === -1 || x === grid.length-1 && grid[y][x] === 1) {
+          res.push(-1);
+          break;
+      }
+      if (grid[y][x] === 1 && x !== grid[0].length -1) {
+          x += 1;
+      } else if (grid[y][x] === -1 && x !== 0) {
+          x -= 1;
+      }
+
+      if (y === grid.length) {
+          res.push(x);
+          x += 1;
+      }
+  }
+  return res;
+};
