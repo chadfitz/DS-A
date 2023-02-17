@@ -235,6 +235,7 @@ var mySqrt = function(x) {
 
 
 // ------------------------------------------------------------- //
+// need to account for when there's multiples of the same number 
 // 1010. Pairs of Songs With Total Durations Divisible by 60
 var numPairsDivisibleBy60 = function(time) {
   let count = 0;
