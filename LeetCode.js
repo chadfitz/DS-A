@@ -248,14 +248,11 @@ var numPairsDivisibleBy60 = function(time) {
       } else {
           if (hash[60 - complement] !== undefined) {
               count += 1;
+              hash[60 - complement] += 1;
           } else {
-              hash[complement] = i;
+              hash[complement] = 0;
           }
       }
-      console.log("time[i]:", time[i])
-      console.log("complement:", complement)
-      console.log("hash:", hash)
-      console.log("count:", count)
   }
 
   if (hash[0] > 1) {
