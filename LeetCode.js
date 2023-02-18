@@ -248,9 +248,8 @@ var numPairsDivisibleBy60 = function(time) {
       } else {
           if (hash[60 - complement] !== undefined) {
               count += 1;
-              hash[60 - complement] += 1;
           } else {
-              hash[complement] = 0;
+              hash[complement] = i;
           }
       }
   }
@@ -266,28 +265,28 @@ var numPairsDivisibleBy60 = function(time) {
 //1706. Where Will the Ball Fall
 var findBall = function(grid) {
   let res = [];
-  let x;
+  let col;
   let ball
 
-  for (let y = 0; y < grid.length+1; y++) {
+  for (let col = 0; col < grid.length+1; col++) {
 
-      if (x < grid.length - 2 && grid[y][x] === 1 && grid[y][x+1] === -1) {
+      if (col < grid.length - 2 && grid[col][col] === 1 && grid[col][col+1] === -1) {
           res.push(-1);
           break;
       }
-      if (x === 0 && grid[y][x] === -1 || x === grid.length-1 && grid[y][x] === 1) {
+      if (col === 0 && grid[col][col] === -1 || col === grid.length-1 && grid[col][col] === 1) {
           res.push(-1);
           break;
       }
-      if (grid[y][x] === 1 && x !== grid[0].length -1) {
-          x += 1;
-      } else if (grid[y][x] === -1 && x !== 0) {
-          x -= 1;
+      if (grid[col][col] === 1 && col !== grid[0].length -1) {
+          col += 1;
+      } else if (grid[col][col] === -1 && col !== 0) {
+          col -= 1;
       }
 
-      if (y === grid.length) {
-          res.push(x);
-          x += 1;
+      if (col === grid.length) {
+          res.push(col);
+          col += 1;
       }
   }
   return res;
