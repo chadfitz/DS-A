@@ -311,3 +311,34 @@ var generate = function(numRows) {
 
   return res;
 };
+
+// Isomorphic Strings
+// Overview: For two strings to be isomorphic, all occurrences of a character in string A can be replaced with another character to get string B. 
+// The order of the characters must be preserved. There must be one-to-one mapping for every char of string A to every char of string B.
+// paper and title would return true. egg and sad would return false. dgg and add would return true.
+
+// if every instance of a letter in a is replaced with the same letter and equals b, return true
+// make an object keeping track of what I'm transforming the letters into
+// iterate through, if a[i] can be transformed into b[i], log the transformation in the object and transform it
+
+const isIsomorphic = (a, b) => {
+  if (a.length !== b.length) return false;
+  let transformed = {}
+
+  for (i = 0; i < a.length; i++) {
+    if (transformed[a[i]] === undefined) {
+      transformed[a[i]] = b[i];
+      // a[i] = b[i]
+    } else {
+      if (transformed[a[i]] && transformed[a[i]] !== b[i]) return false;
+    }
+  }
+
+  // return a === b;
+  return true;
+}
+
+
+// console.log(isIsomorphic("egg", 'add')); // true
+// console.log(isIsomorphic("paper", 'title')); // true
+// console.log(isIsomorphic("kick", 'side')); // false
