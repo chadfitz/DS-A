@@ -342,3 +342,33 @@ const isIsomorphic = (a, b) => {
 // console.log(isIsomorphic("egg", 'add')); // true
 // console.log(isIsomorphic("paper", 'title')); // true
 // console.log(isIsomorphic("kick", 'side')); // false
+
+var singleNonDuplicate = function(nums) {
+  // let res = [];
+
+  // for (let i = 0; i < nums.length; i++) {
+  //     if (res.includes(nums[i])) {
+  //         // if res array has nums[i], delete from the array: splice(index, delete count, item)
+  //         // at index:, 1 item, delete nums[i] 
+  //         res.splice(res.indexOf(nums[i]), 1, nums[i])
+  //     } else {
+  //         res.push(nums[i])
+  //     }
+  //     // console.log(res);
+  //     console.log(res)
+  // }
+
+  // return res;
+
+  let counts = {};
+
+  for (let i = 0; i < nums.length; i++) {
+      if (counts[nums[i]] === undefined) {
+          counts[nums[i]] = 1;
+      } else {
+          counts[nums[i]] += 1;
+      }
+  }
+
+  for (const [num, count] of Object.entries(counts)) if (count === 1) return num;
+};
