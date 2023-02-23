@@ -345,7 +345,7 @@ const isIsomorphic = (a, b) => {
 
 var singleNonDuplicate = function(nums) {
   // binary sort way (good)
-
+  // to-do: look into bsort
   
   // worse way
   if (nums.length === 1) return nums[0];
