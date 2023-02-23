@@ -344,22 +344,16 @@ const isIsomorphic = (a, b) => {
 // console.log(isIsomorphic("kick", 'side')); // false
 
 var singleNonDuplicate = function(nums) {
-  // let res = [];
+  // binary sort way (good)
 
-  // for (let i = 0; i < nums.length; i++) {
-  //     if (res.includes(nums[i])) {
-  //         // if res array has nums[i], delete from the array: splice(index, delete count, item)
-  //         // at index:, 1 item, delete nums[i] 
-  //         res.splice(res.indexOf(nums[i]), 1, nums[i])
-  //     } else {
-  //         res.push(nums[i])
-  //     }
-  //     // console.log(res);
-  //     console.log(res)
-  // }
-
-  // return res;
-
+  
+  // worse way
+  if (nums.length === 1) return nums[0];
+  for (let i = 0; i < nums.length; i += 2) {
+      if (nums[i] !== nums[i+1] || i === nums.length - 1) return nums[i]
+  }
+  
+  // WORST way (didn't see it's a sorted array)
   let counts = {};
 
   for (let i = 0; i < nums.length; i++) {
