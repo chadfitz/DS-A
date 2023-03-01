@@ -366,3 +366,24 @@ var singleNonDuplicate = function(nums) {
 
   for (const [num, count] of Object.entries(counts)) if (count === 1) return num;
 };
+
+
+// 53. Maximum Subarray
+var maxSubArray = function(nums) {
+  // start with nums[0] instead of 0 in the case of all negatives
+  let maxSum = currentSum = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+      // add new num to get new current sum
+          // if current sum > max sum, update max sum
+          // if negative, set current sum to 0
+      
+      // this line goes first in the case of nums of length 2, such as [-2,1]
+      if (currentSum < 0) currentSum = 0;
+      
+      currentSum += nums[i];
+      if (currentSum > maxSum) maxSum = currentSum;
+  }
+
+  return maxSum;
+};
