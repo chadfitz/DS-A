@@ -343,6 +343,9 @@ const isIsomorphic = (a, b) => {
 // console.log(isIsomorphic("paper", 'title')); // true
 // console.log(isIsomorphic("kick", 'side')); // false
 
+
+
+// 540. Single Element in a Sorted Array
 var singleNonDuplicate = function(nums) {
   // binary sort way (good)
   // to-do: look into bsort
