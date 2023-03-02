@@ -390,3 +390,17 @@ var maxSubArray = function(nums) {
 
   return maxSum;
 };
+
+// 
+var isSubsequence = function(s, t) {
+  let sIndex = 0;
+
+  for (let i = 0; i < s.length; i++) {
+      if (!t.includes(s[i])) return false;
+      // if (t.indexOf(s[i]) <= sIndex) return false;
+      sIndex = t.indexOf(s[i])
+      t = t.slice(sIndex+1)
+  }
+
+  return true;
+};
