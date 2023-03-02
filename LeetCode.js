@@ -391,7 +391,7 @@ var maxSubArray = function(nums) {
   return maxSum;
 };
 
-// 
+// 392. Is Subsequence
 var isSubsequence = function(s, t) {
   let sIndex = 0;
 
