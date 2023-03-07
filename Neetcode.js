@@ -33,3 +33,17 @@ var isAnagram = function(str1, str2) {
   // boolean if every value is 0
   return Object.values(count).every( num => num === 0);
 };
+
+// 3 (1. Two Sum)
+var twoSum = function(nums, target) {
+  // use difference as the key because you can check hash[key] easily, but not value easily
+    // ex: [2,7] target = 9; 
+    // 2 becomes hash[9-2] = index
+    // hash[7] !== undefined 
+  let hash = {}
+
+  for (let i = 0; i < nums.length; i++) {
+      if (hash[nums[i]] === undefined) hash[target-nums[i]] = i
+      else return [hash[nums[i]], i]
+  }
+}

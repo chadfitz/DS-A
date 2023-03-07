@@ -1,3 +1,13 @@
+// 1. Two Sum
+var twoSum = function(nums, target) {
+  let hash = {}
+
+  for (let i = 0; i < nums.length; i++) {
+      if (hash[nums[i]] === undefined) hash[target-nums[i]] = i
+      else return [hash[nums[i]], i]
+  }
+}
+
 // Roman to Integer
 var romanToInt = function(s) {
   let numerals = {
