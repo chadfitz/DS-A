@@ -16,7 +16,7 @@ function binarySearch(array, target) {
   } else if (array[midpoint] < target) {
     const subResult = binarySearch(array.slice(midpoint + 1), target);
     return subResult === -1 ? -1 : subResult + midpoint + 1;
-  } else {
-    return midpoint;
-  }
+  } // else {
+  //   return midpoint;
+  // }
 }

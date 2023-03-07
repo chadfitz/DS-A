@@ -449,3 +449,18 @@ var isAnagram = function(str1, str2) {
   // boolean if every value is 0
   return Object.values(count).every( num => num === 0);
 };
+
+// 704. Binary Search
+var search = function(nums, target) {
+  const mp = Math.floor(nums.length / 2);
+  if (nums[mp] === target) return mp;
+  if (!nums.length) return -1;
+
+  if (target < nums[mp]) {
+      return search(nums.slice(0, mp), target);
+  } else {
+      const res = search(nums.slice(mp+1, nums.length), target)
+      if (res === -1) return -1;
+      return res + mp + 1
+  }
+};

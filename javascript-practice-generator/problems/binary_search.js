@@ -19,7 +19,7 @@ const bsearch = (sortedArray, target) => {
   if (target < sortedArray[mp]) {
     return bsearch(sortedArray.slice(0, mp), target);
   } else {
-    res = bsearch(sortedArray.slice(mp+1, sortedArray.length), target)
+    const res = bsearch(sortedArray.slice(mp+1, sortedArray.length), target)
     return res === -1 ? -1 : res + mp + 1;
   }
 }
