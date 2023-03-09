@@ -487,7 +487,6 @@ var pivotArray = function(nums, pivot) {
   let lessThan = [];
   let equal = []
   let greaterThan = [];
-  let newArr = [];
 
   for (let i = 0; i < nums.length; i++) {
       if (nums[i] < pivot) {
@@ -498,5 +497,5 @@ var pivotArray = function(nums, pivot) {
           greaterThan.push(nums[i])
       }
   }
-  return newArr.concat(lessThan, equal, greaterThan)
+  return lessThan.concat(equal, greaterThan)
 };
