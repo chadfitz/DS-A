@@ -262,3 +262,202 @@ class Apple {
 
 const apple = new Apple();
 apple.logVarieties();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// What will the following JavaScript code output?
+// for (var i = 0; i < 3; i++) {
+//   setTimeout(function() { alert(i); }, 1000 + i);
+// }
+
+// What will the following JavaScript code output?
+async function getData() {
+  return await Promise.resolve('Hello!');
+}
+
+const data = getData();
+console.log(data);
+
+// How can Async Hooks be used to monitor the lifetime of asynchronous resources?
+// By tracking every phase of each resource.
+// By tracking the "before" and "after" phases of each resource.
+// By tracking the "init" and "after" phases of each resource.
+
+// What does the following code do?
+// function myMod(array, s) {
+//   var na = [];
+//   for (var i = 0; i < array.length; i++) {
+//     na.push(s + array[i]);
+//   }
+//   return na;
+// }
+// Modifies each element in an array by appending a suffix and returns the new array.
+// Modifies each element in an array by adding the letter s and returns the new aray.
+// Modifies each element in an array by prepending a prefix and returns the new array.
+
+// What does the following SQL code do?
+// SELECT name, MAX(salary) FROM Employees WHERE salary < (SELECT MAX(salary) FROM employees)
+
+// What data structure is used to implement a MySQL indexes?
+
+
+
+
+
+
+
+
+
+
+
+
+// SQL Challenge
+// Your table: maintable_QP4AZ
+
+// MySQL version: 8.0.23
+
+// In this MySQL challenge, your query should return the vendor information along with the values from the table cb_vendorinformation. You should combine the values of the two tables based on the GroupID column. The final query should only print out the GroupID, CompanyName, and final count of all rows that are grouped into each company name under a column titled Count. The output table should be then sorted by the Count column and then sorted by GroupID so that a higher number appears first.
+
+// Your output should look like the following table:
+// GroupID |     CompanyName     | Count |
+//      27 | Machinx             |     1 |
+//      5  | WaterBus Enterprise |     2 |
+//      40 | FireConsulting      |     5 |
+// ---
+
+/* write your SQL query below */
+
+// SELECT * FROM maintable_QP4AZ
+
+
+
+
+
+
+
+
+
+
+// Front-end Challenge
+// We provided some simple React template code. Your goal is to create a simple form at the top that allows the user to enter in a first name, last name, and phone number and there should be a submit button. Once the submit button is pressed, the information should be displayed in a list below (automatically sorted by last name) along with all the previous information that was entered. This way the application can function as a simple phone book. When your application loads, the input fields (not the phone book list) should be prepopulated with the following values already:
+
+// First name = Coder
+// Last name = Byte
+// Phone = 8885559999
+
+function PhoneBookForm({ addEntryToPhoneBook }) {
+
+  return (
+    <form onSubmit={e => { e.preventDefault() }} style={style.form.container}>
+      <label>First name:</label>
+      <br />
+      <input 
+        style={style.form.inputs}
+        className='userFirstname'
+        name='userFirstname' 
+        type='text'
+      />
+      <br/>
+      <label>Last name:</label>
+      <br />
+      <input 
+        style={style.form.inputs}
+        className='userLastname'
+        name='userLastname' 
+        type='text' 
+      />
+      <br />
+      <label>Phone:</label>
+      <br />
+      <input
+        style={style.form.inputs}
+        className='userPhone' 
+        name='userPhone' 
+        type='text'
+      />
+      <br/>
+      <input 
+        style={style.form.submitBtn} 
+        className='submitButton'
+        type='submit' 
+        value='Add User' 
+      />
+    </form>
+  )
+}
+
+function InformationTable(props) {
+  return (
+    <table style={style.table} className='informationTable'>
+      <thead> 
+        <tr>
+          <th style={style.tableCell}>First name</th>
+          <th style={style.tableCell}>Last name</th>
+          <th style={style.tableCell}>Phone</th>
+        </tr>
+      </thead> 
+    </table>
+  );
+}
+
+function Application(props) {
+  return (
+    <section>
+      <PhoneBookForm />
+      <InformationTable />
+    </section>
+  );
+}
+
+// const container = document.getElementById('root');
+// const root = createRoot(container);
+// root.render(<Application />);
+
+
+
+
+
+
+
+
+
+
+
+// Back-end Challenge
+// In the JavaScript file, write a program to perform a GET request on the route https://coderbyte.com/api/challenges/json/age-counting which contains a data key and the value is a string which contains items in the format: key=STRING, age=INTEGER. Your goal is to count how many items exist that have an age equal to or greater than 50, and print this final value.
+
+// Example Input
+// {"data":"key=IAfpK, age=58, key=WNVdi, age=64, key=jp9zt, age=47"}
+
+// Example Output
+// 2
+// Example Output with ChallengeToken
+// 2:731tlmvh0fz
+// Once your function is working, take the final output string and combine it with your ChallengeToken, both in reverse order and separated by a colon.
+
+// Your ChallengeToken: zf0hvmlt137
+
+
+// --- code here: ---
+// const https = require('https');
+
+// https.get('https://coderbyte.com/api/challenges/json/age-counting', (resp) => {
+  
+//   let data = '';
+
+//   // parse json data here...
+  
+//   console.log(resp);
+
+// });
