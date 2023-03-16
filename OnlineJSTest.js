@@ -340,6 +340,11 @@ console.log(data);
 
 // SELECT * FROM maintable_QP4AZ
 
+// my (incorrect) attempt
+// SELECT maintable_QP4AZ.GroupID, CompanyName, COUNT(*) AS Count 
+// FROM maintable_QP4AZ
+// JOIN cb_vendorinformation ON maintable_QP4AZ.GroupID = cb_vendorinformation.GroupID
+// ORDER BY Count, GroupID DESC; 
 
 
 
