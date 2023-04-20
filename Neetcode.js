@@ -95,3 +95,19 @@ var maxProfit = function(prices) {
   }
   return profit;
 };
+
+// ------------------------------------------------------
+// Linked List
+// 206. Reverse Linked List
+var reverseList = function(head) {
+  let prev = null;
+  let current = head;
+
+  while (current) {
+      const newNext = current.next;
+      current.next = prev;
+      prev = current;
+      current = newNext;
+  }
+  return prev;
+};
