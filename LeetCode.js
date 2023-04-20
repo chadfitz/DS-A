@@ -499,3 +499,17 @@ var pivotArray = function(nums, pivot) {
   }
   return lessThan.concat(equal, greaterThan)
 };
+
+// 206. Reverse Linked List
+var reverseList = function(head) {
+  let prev = null;
+  let current = head;
+
+  while (current) {
+      const newNext = current.next;
+      current.next = prev;
+      prev = current;
+      current = newNext;
+  }
+  return prev;
+};
