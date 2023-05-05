@@ -104,10 +104,10 @@ var reverseList = function(head) {
   let current = head;
 
   while (current) {
-      const newNext = current.next;
+      const next = current.next;
       current.next = prev;
       prev = current;
-      current = newNext;
+      current = next;
   }
   return prev;
 };
