@@ -64,6 +64,3 @@ var isPalindrome = function(str) {
 
   return true
 };
-
-
-efaiofh;ea      
