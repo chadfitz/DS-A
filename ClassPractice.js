@@ -3,6 +3,11 @@ class Leaderboard {
     this.leaderboard = [];
   }
 
+  /** 
+   * @param {number} playerId 
+   * @param {number} score
+   * @return {void}
+  */
   // adding score to the given player's score
     // if no player with id on the leaderboard, add player to leaderboard with the score
   addScore(playerId, score) {
@@ -12,13 +17,30 @@ class Leaderboard {
     else this.leaderboard[(playerId - 1)][1] = score;
   }
 
+  /** 
+   * @param {number} K
+   * @return {number}
+  */
   // return the score sum of the top K players
   top(K) {
+    let sum = 0;
+    let i = 0;
     
+    // K is always this.leaderboard.length
+    while (i < K) {
+      sum += this.leaderboard[i][1]
+      i++
+    }
+
+    return sum;
   }
 
+  /** 
+   * @param {number} playerId
+   * @return {void}
+  */
   // reset the score of this player to 0
-  resizeTo(playerId) {
-
+  reset(playerId) {
+    this.leaderboard[playerId - 1][1] = 0;
   }
 }
