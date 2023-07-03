@@ -586,5 +586,3 @@ var removeDuplicates = function(s) {
 
   return stack.join("");
 };
-
-adding some stuff
