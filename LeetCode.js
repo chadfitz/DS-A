@@ -586,3 +586,31 @@ var removeDuplicates = function(s) {
 
   return stack.join("");
 };
+
+// 807. Max Increase to Keep City Skyline
+var maxIncreaseKeepingSkyline = function(grid) {
+  let maxRow = {};
+  let maxColumn = {};
+  let res = 0;
+
+  for (let r = 0; r < grid.length; r++) {
+      maxRow[r] = Math.max(...grid[r]);
+      tempMaxColumn = 0;
+      for (let c = 0; c < grid[0].length; c++) {
+          if (grid[c][r] > tempMaxColumn) tempMaxColumn = grid[c][r];
+          if (c == grid[0].length - 1) maxColumn[r] = tempMaxColumn;
+      }
+  }
+
+  for (let r = 0; r < grid.length; r++) {
+      for (let c = 0; c < grid[0].length; c++) {
+          if (maxColumn[c] < maxRow[r]) {
+              res += maxColumn[c] - grid[r][c]
+          } else {
+              res += maxRow[r] - grid[r][c]
+          }
+      }
+  }
+
+  return res;
+};
