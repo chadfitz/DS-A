@@ -15,3 +15,15 @@ class Solution {
 }
 
 // 9. Palindrome Number
+class Solution {
+  public boolean isPalindrome(int x) {
+      String str = Integer.toString(x);
+      char[] charArr = str.toCharArray();
+
+      for (int i = 0; i < charArr.length; i++) {
+          if (charArr[i] != charArr[charArr.length-1-i]) return false;
+      }
+
+      return true;
+  }
+}
