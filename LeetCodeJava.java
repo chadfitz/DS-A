@@ -27,3 +27,33 @@ class Solution {
       return true;
   }
 }
+
+// 13. Roman to Integer
+class Solution {
+    public int romanToInt(String s) {
+        Map<Character, Integer> symbols = new HashMap<Character, Integer>();
+        symbols.put('I', 1);
+        symbols.put('V', 5);
+        symbols.put('X', 10);
+        symbols.put('L', 50);
+        symbols.put('C', 100);
+        symbols.put('D', 500);
+        symbols.put('M', 1000);
+
+        System.out.println(symbols);
+
+        int result = 0;
+        int i = 0;
+        while (i < s.length()) {
+            if (i < s.length() - 1 && symbols.get(s.charAt(i)) < symbols.get(s.charAt(i + 1))) {
+                result += symbols.get(s.charAt(i + 1)) - symbols.get(s.charAt(i));
+                i += 2;
+            } else {
+                result += symbols.get(s.charAt(i));
+                i++;
+            }
+        }
+
+        return result;
+    }
+}
