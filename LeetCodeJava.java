@@ -57,3 +57,19 @@ class Solution {
         return result;
     }
 }
+
+// 14. Longest Common Prefix
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs.length <= 1) return strs[0];
+        Arrays.sort(strs);
+
+        String res = "";
+        for (int i = 0; i < strs[0].length(); i++) {
+            if (strs[0].charAt(i) != strs[strs.length - 1].charAt(i)) return res;
+            res += strs[0].charAt(i);
+        }
+
+        return res;
+    }
+}
