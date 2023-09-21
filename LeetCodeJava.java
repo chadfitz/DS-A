@@ -73,3 +73,29 @@ class Solution {
         return res;
     }
 }
+
+// 20. Valid Parentheses
+class Solution {
+    public boolean isValid(String s) {
+        if (s.length() == 1) return false;
+
+        Map<Character, Character> hashMap = new HashMap<Character, Character>();
+        hashMap.put(')', '(');
+        hashMap.put(']', '[');
+        hashMap.put('}', '{');
+
+        Stack stack = new Stack();
+        char[] sArray = s.toCharArray();
+        for (char ch : sArray) {
+            if (hashMap.get(ch) == null) {
+                stack.add(ch);
+            } else if (stack.empty()) {
+                return false;
+            } else {
+                if (stack.pop() != hashMap.get(ch)) return false;
+            }
+        }
+
+        return stack.size() == 0;
+    }
+}
