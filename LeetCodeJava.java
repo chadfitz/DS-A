@@ -85,14 +85,11 @@ class Solution {
         hashMap.put('}', '{');
 
         Stack stack = new Stack();
-        char[] sArray = s.toCharArray();
-        for (char ch : sArray) {
+        for (char ch : s.toCharArray()) {
             if (hashMap.get(ch) == null) {
-                stack.add(ch);
-            } else if (stack.empty()) {
+                stack.push(ch);
+            } else if (stack.empty() || stack.pop() != hashMap.get(ch)) {
                 return false;
-            } else {
-                if (stack.pop() != hashMap.get(ch)) return false;
             }
         }
 
