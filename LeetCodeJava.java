@@ -96,3 +96,6 @@ class Solution {
         return stack.size() == 0;
     }
 }
+
+
+// random stuff
