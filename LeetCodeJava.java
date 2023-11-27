@@ -124,27 +124,12 @@ class Solution {
     }
 }
 
-// 217. Contains Duplicate
-// sorting solution
 class Solution {
     public boolean containsDuplicate(int[] nums) {
         Arrays.sort(nums);
 
         for (int i = 0; i < nums.length - 1; i++) {
             if (nums[i] == nums[i + 1]) return true;
-        }
-
-        return false;
-    }
-}
-// hash set solution
-class Solution {
-    public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> myHashSet = new HashSet<>();
-
-        for (int num : nums) {
-            if (myHashSet.contains(num)) return true;
-            myHashSet.add(num);
         }
 
         return false;
