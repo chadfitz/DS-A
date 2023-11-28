@@ -136,3 +136,23 @@ class Solution {
         return false;
     }
 }
+
+//     public boolean isValid(String s) {
+//     if (s.length() == 1) return false;
+
+//     Map<Character, Character> hashMap = new HashMap<Character, Character>();
+//     hashMap.put(')', '(');
+//     hashMap.put(']', '[');
+//     hashMap.put('}', '{');
+
+//     Stack stack = new Stack();
+//     for (char ch : s.toCharArray()) {
+//         if (hashMap.get(ch) == null) {
+//             stack.push(ch);
+//         } else if (stack.empty() || stack.pop() != hashMap.get(ch)) {
+//             return false;
+//         }
+//     }
+
+//     return stack.size() == 0;
+// }
