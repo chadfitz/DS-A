@@ -112,6 +112,20 @@ class Solution {
     }
 }
 
+class Solution {
+    public int maxProfit(int[] prices) {
+        int lowPrice = prices[0];
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            if (price < lowPrice) lowPrice = price;
+            if ((price - lowPrice) > maxProfit) maxProfit = price - lowPrice;
+        }
+
+        return maxProfit;
+    }
+}
+
 // 125. Valid Palindrome
 class Solution {
     public boolean isPalindrome(String s) {
