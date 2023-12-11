@@ -88,12 +88,13 @@ class Solution {
         for (char ch : s.toCharArray()) {
             if (hashMap.get(ch) == null) {
                 stack.push(ch);
-            } else if (stack.empty() || stack.pop() != hashMap.get(ch)) {
-                return false;
+            } else {
+                if (stack.empty()) return false;
+                if (stack.pop() != c) return false; 
             }
         }
 
-        return stack.size() == 0;
+        return stack.empty();
     }
 }
 
@@ -166,5 +167,33 @@ class Solution {
         }
 
         return false;
+    }
+}
+
+// 242. Valid Anagram
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
+        HashMap<Character, Integer> myHashMap = new HashMap<Character, Integer>();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (myHashMap.get(s.charAt(i)) == null) {
+                myHashMap.put(s.charAt(i), 1);
+            } else {
+                myHashMap.put(s.charAt(i), myHashMap.get(s.charAt(i)) + 1);
+            }
+
+            if (myHashMap.get(t.charAt(i)) == null) {
+                myHashMap.put(t.charAt(i), -1);
+            } else {
+                myHashMap.put(t.charAt(i), myHashMap.get(t.charAt(i)) - 1);
+            }
+        }
+
+        for (int value : myHashMap.values()) {
+            if (value != 0) return false;
+        }
+
+        return true;
     }
 }
