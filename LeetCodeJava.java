@@ -74,6 +74,29 @@ class Solution {
     }
 }
 
+// 20. Valid Parentheses
+class Solution {
+    public boolean isValid(String s) {
+        if (s.length() == 1) return false;
+
+        Map<Character, Character> hashMap = new HashMap<Character, Character>();
+        hashMap.put(')', '(');
+        hashMap.put(']', '[');
+        hashMap.put('}', '{');
+
+        Stack stack = new Stack();
+        for (char ch : s.toCharArray()) {
+            if (hashMap.get(ch) == null) {
+                stack.push(ch);
+            } else {
+                if (stack.empty()) return false;
+                if (stack.pop() != c) return false; 
+            }
+        }
+
+        return stack.empty();
+    }
+}
 
 // 26. Remove Duplicates from Sorted Array
 class Solution {
