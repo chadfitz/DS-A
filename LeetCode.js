@@ -586,8 +586,6 @@ var removeDuplicates = function(s) {
 
   return stack.join("");
 };
-
-// 807. Max Increase to Keep City Skyline
 var maxIncreaseKeepingSkyline = function(grid) {
   let maxRow = {};
   let maxColumn = {};
@@ -614,3 +612,4 @@ var maxIncreaseKeepingSkyline = function(grid) {
 
   return res;
 };
+// 807. Max Increase to Keep City Skyline
