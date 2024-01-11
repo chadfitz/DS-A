@@ -96,6 +96,32 @@ var maxProfit = function(prices) {
   return profit;
 };
 
+//3 Longest Substring Without Repeating Characters
+var lengthOfLongestSubstring = function(s) {
+  if (s.length == 1) return 1;
+
+  let start = 0;
+  let i = 0;
+  let charCount = {};
+  let res = 0;
+
+  while (i < s.length) {
+      if (charCount[s[i]] == 1) {
+          if ((i - start) > res) res = i - start;
+          i = start;
+          start += 1;
+          charCount = {};
+      } else {
+          charCount[s[i]] = 1;
+      }
+
+      i++;
+      if (i == s.length && (i - start > res)) res = i - start;
+  }
+
+  return res;
+};
+
 // ------------------------------------------------------
 // Linked List
 // 206. Reverse Linked List
