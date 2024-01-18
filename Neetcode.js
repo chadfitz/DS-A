@@ -10,7 +10,17 @@ var containsDuplicate = function(nums) {
   return false;
 };
 
+// 2 (242. Valid Anagram)
+var isAnagram = function(str1, str2) {
+  if (str1.length !== str2.length) return false;
 
+  let count = {}
+  // iterate through string 1
+      // assign a key of the letter with a value of its count
+  for (let i = 0; i < str1.length; i++) {
+      if (count[str1[i]] === undefined) count[str1[i]] = 1
+      else count[str1[i]] += 1
+  }
 
   // iterate through string 2
       // subtract the count of each letter's corresponding value
