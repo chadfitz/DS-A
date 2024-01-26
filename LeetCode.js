@@ -98,6 +98,27 @@ const validParentheses = (string) => {
 // console.log(validParentheses('()[}')) // false
 
 
+// 56. Merge Intervals
+var merge = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  // takes care of intervals.length <= 1 &&
+  // compare to this end subarr instead of intervals[i+1] in cases like: [[1,4],[0,2],[3,5]]
+  let res = [intervals[0]];
+
+  for (let i = 1; i < intervals.length; i++) {
+      if (res[res.length - 1][1] >= intervals[i][0]) {
+          res[res.length - 1] = [Math.min(res[res.length - 1][0], intervals[i][0]), 
+                                 Math.max(res[res.length - 1][1], intervals[i][1])];
+      } else {
+          res.push(intervals[i]);
+      }
+  }
+
+  return res;
+};
+
+
 // 125. Valid Palindrome
 var isPalindrome = function(str) {
   str = str.toLowerCase().replace(/[^a-z0-9]/gi, '');
