@@ -98,6 +98,26 @@ const validParentheses = (string) => {
 // console.log(validParentheses('()[}')) // false
 
 
+// 11. Container With Most Water
+var maxArea = function(height) {
+  let left = 0;
+  let right = height.length -1;
+  let area = 0;
+
+  while (left < right) {
+      let newArea = (right - left) * (Math.min(height[left], height[right]));
+      if (newArea > area) area = newArea;
+      if (height[left] > height[right]) {
+          right--
+      } else {
+          left++
+      }
+  }
+
+  return area;
+};
+
+
 // 56. Merge Intervals
 var merge = function(intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
