@@ -544,24 +544,6 @@ var search = function(nums, target) {
   return -1;
 };
 
-// 2161.Partition Array According to Given Pivot
-var pivotArray = function(nums, pivot) {
-  let lessThan = [];
-  let equal = []
-  let greaterThan = [];
-
-  for (let i = 0; i < nums.length; i++) {
-      if (nums[i] < pivot) {
-          lessThan.push(nums[i]);
-      } else if (nums[i] === pivot) {
-          equal.push(nums[i])
-      } else if (nums[i] > pivot) {
-          greaterThan.push(nums[i])
-      }
-  }
-  return lessThan.concat(equal, greaterThan)
-};
-
 // 206. Reverse Linked List
 var reverseList = function(head) {
   let prev = null;
