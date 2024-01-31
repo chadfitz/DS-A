@@ -488,6 +488,26 @@ var containsDuplicate = function(nums) {
   return false;
 };
 
+// 219. Contains Duplicate II
+var containsNearbyDuplicate = function(nums, k) {
+  if (nums.length <= 1) return false;
+
+  let left = 0;
+  let right = 1;
+  while (left < nums.length - 1) {
+      if (right - left > k || right == nums.length) {
+          left++;
+          right = left + 1;
+      } else if (nums[left] == nums[right]) {
+          return true;
+      } else {
+          right++;
+      }
+  }
+
+  return false;
+};
+
 // 242. Valid Anagram
 var isAnagram = function(str1, str2) {
   if (str1.length !== str2.length) return false;
