@@ -490,22 +490,22 @@ var containsDuplicate = function(nums) {
 
 // 219. Contains Duplicate II
 var containsNearbyDuplicate = function(nums, k) {
-  if (nums.length <= 1) return false;
+    if (nums.length <= 1) return false;
 
-  let left = 0;
-  let right = 1;
-  while (left < nums.length - 1) {
-      if (right - left > k || right == nums.length) {
-          left++;
-          right = left + 1;
-      } else if (nums[left] == nums[right]) {
-          return true;
-      } else {
-          right++;
-      }
-  }
+    let left = 0;
+    let right = 1;
+    while (left < nums.length - 1) {
+        if (right - left > k || right == nums.length) {
+            left++;
+            right = left + 1;
+        } else if (nums[left] == nums[right]) {
+            return true;
+        } else {
+            right++;
+        }
+    }
 
-  return false;
+    return false;
 };
 
 // 242. Valid Anagram
@@ -564,23 +564,6 @@ var search = function(nums, target) {
   return -1;
 };
 
-// 2161.Partition Array According to Given Pivot
-var pivotArray = function(nums, pivot) {
-  let lessThan = [];
-  let equal = []
-  let greaterThan = [];
-
-  for (let i = 0; i < nums.length; i++) {
-      if (nums[i] < pivot) {
-          lessThan.push(nums[i]);
-      } else if (nums[i] === pivot) {
-          equal.push(nums[i])
-      } else if (nums[i] > pivot) {
-          greaterThan.push(nums[i])
-      }
-  }
-  return lessThan.concat(equal, greaterThan)
-};
 
 // 206. Reverse Linked List
 var reverseList = function(head) {
@@ -695,4 +678,22 @@ var maxIncreaseKeepingSkyline = function(grid) {
   }
 
   return res;
+};
+
+// 2161.Partition Array According to Given Pivot
+var pivotArray = function(nums, pivot) {
+  let lessThan = [];
+  let equal = []
+  let greaterThan = [];
+
+  for (let i = 0; i < nums.length; i++) {
+      if (nums[i] < pivot) {
+          lessThan.push(nums[i]);
+      } else if (nums[i] === pivot) {
+          equal.push(nums[i])
+      } else if (nums[i] > pivot) {
+          greaterThan.push(nums[i])
+      }
+  }
+  return lessThan.concat(equal, greaterThan)
 };
