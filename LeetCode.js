@@ -579,37 +579,6 @@ var reverseList = function(head) {
   return prev;
 };
 
-// 1122. Relative Sort Array
-var relativeSortArray = function(arr1, arr2) {
-  let hashMap = {};
-
-  for (let i = 0; i < arr1.length; i++) {
-      if (!hashMap[arr1[i]]) {
-          hashMap[arr1[i]] = 1
-      } else {
-          hashMap[arr1[i]] += 1
-      }
-  }
-
-  let newArr = [];
-
-  for (let i = 0; i < arr2.length; i++) {
-      while (hashMap[arr2[i]] > 0) {
-          newArr.push(arr2[i])
-          hashMap[arr2[i]] -= 1
-      }
-  }
-
-  for (let key in hashMap) {
-      while (hashMap[key] > 0) {
-          newArr.push(key)
-          hashMap[key] -= 1
-      } 
-  }
-
-  return newArr;
-};
-
 // 438. Find All Anagrams in a String
 var findAnagrams = function(s, p) {
   let res = [];
@@ -636,7 +605,6 @@ var findAnagrams = function(s, p) {
 
   return res;
 };
-
 
 // 807. Max Increase to Keep City Skyline
 var maxIncreaseKeepingSkyline = function(grid) {
@@ -679,6 +647,37 @@ var removeDuplicates = function(s) {
   }
 
   return stack.join("");
+};
+
+// 1122. Relative Sort Array
+var relativeSortArray = function(arr1, arr2) {
+  let hashMap = {};
+
+  for (let i = 0; i < arr1.length; i++) {
+      if (!hashMap[arr1[i]]) {
+          hashMap[arr1[i]] = 1
+      } else {
+          hashMap[arr1[i]] += 1
+      }
+  }
+
+  let newArr = [];
+
+  for (let i = 0; i < arr2.length; i++) {
+      while (hashMap[arr2[i]] > 0) {
+          newArr.push(arr2[i])
+          hashMap[arr2[i]] -= 1
+      }
+  }
+
+  for (let key in hashMap) {
+      while (hashMap[key] > 0) {
+          newArr.push(key)
+          hashMap[key] -= 1
+      } 
+  }
+
+  return newArr;
 };
 
 // 2161.Partition Array According to Given Pivot
