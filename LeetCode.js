@@ -637,20 +637,6 @@ var findAnagrams = function(s, p) {
   return res;
 };
 
-// 1047. Remove All Adjacent Duplicates In String
-var removeDuplicates = function(s) {
-  let stack = [];
-
-  for (let i = 0; i < s.length; i++) {
-      if (s[i] === stack[stack.length - 1]) {
-          stack.pop()
-      } else {
-          stack.push(s[i])
-      }
-  }
-
-  return stack.join("");
-};
 
 // 807. Max Increase to Keep City Skyline
 var maxIncreaseKeepingSkyline = function(grid) {
@@ -678,6 +664,21 @@ var maxIncreaseKeepingSkyline = function(grid) {
   }
 
   return res;
+};
+
+// 1047. Remove All Adjacent Duplicates In String
+var removeDuplicates = function(s) {
+  let stack = [];
+
+  for (let i = 0; i < s.length; i++) {
+      if (s[i] === stack[stack.length - 1]) {
+          stack.pop()
+      } else {
+          stack.push(s[i])
+      }
+  }
+
+  return stack.join("");
 };
 
 // 2161.Partition Array According to Given Pivot
