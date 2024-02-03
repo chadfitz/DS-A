@@ -456,6 +456,20 @@ var isSubsequence = function(s, t) {
   return true;
 };
 
+// 206. Reverse Linked List
+var reverseList = function(head) {
+  let prev = null;
+  let current = head;
+
+  while (current) {
+      const next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+  }
+  return prev;
+};
+
 // 209. Minimum Size Subarray Sum
 var minSubArrayLen = function(target, nums) {
   let subArr = Infinity;
@@ -530,20 +544,6 @@ var isAnagram = function(str1, str2) {
 
   // boolean if every value is 0
   return Object.values(count).every( num => num === 0);
-};
-
-// 206. Reverse Linked List
-var reverseList = function(head) {
-  let prev = null;
-  let current = head;
-
-  while (current) {
-      const next = current.next;
-      current.next = prev;
-      prev = current;
-      current = next;
-  }
-  return prev;
 };
 
 // 438. Find All Anagrams in a String
