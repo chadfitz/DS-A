@@ -313,35 +313,6 @@ var numPairsDivisibleBy60 = function(time) {
 };
 
 // ---------------------------------------------------------- //
-//1706. Where Will the Ball Fall
-var findBall = function(grid) {
-  let res = [];
-  let col;
-  let ball
-
-  for (let col = 0; col < grid.length+1; col++) {
-
-      if (col < grid.length - 2 && grid[col][col] === 1 && grid[col][col+1] === -1) {
-          res.push(-1);
-          break;
-      }
-      if (col === 0 && grid[col][col] === -1 || col === grid.length-1 && grid[col][col] === 1) {
-          res.push(-1);
-          break;
-      }
-      if (grid[col][col] === 1 && col !== grid[0].length -1) {
-          col += 1;
-      } else if (grid[col][col] === -1 && col !== 0) {
-          col -= 1;
-      }
-
-      if (col === grid.length) {
-          res.push(col);
-          col += 1;
-      }
-  }
-  return res;
-};
 
 
 // 118. Pascal's Triangle
@@ -677,6 +648,36 @@ var relativeSortArray = function(arr1, arr2) {
   }
 
   return newArr;
+};
+
+//1706. Where Will the Ball Fall
+var findBall = function(grid) {
+  let res = [];
+  let col;
+  let ball
+
+  for (let col = 0; col < grid.length+1; col++) {
+
+      if (col < grid.length - 2 && grid[col][col] === 1 && grid[col][col+1] === -1) {
+          res.push(-1);
+          break;
+      }
+      if (col === 0 && grid[col][col] === -1 || col === grid.length-1 && grid[col][col] === 1) {
+          res.push(-1);
+          break;
+      }
+      if (grid[col][col] === 1 && col !== grid[0].length -1) {
+          col += 1;
+      } else if (grid[col][col] === -1 && col !== 0) {
+          col -= 1;
+      }
+
+      if (col === grid.length) {
+          res.push(col);
+          col += 1;
+      }
+  }
+  return res;
 };
 
 // 2161.Partition Array According to Given Pivot
