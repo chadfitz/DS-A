@@ -396,31 +396,6 @@ const isIsomorphic = (a, b) => {
 
 
 
-// 540. Single Element in a Sorted Array
-var singleNonDuplicate = function(nums) {
-  // binary sort way (good)
-  // to-do: look into bsort
-  
-  // worse way
-  if (nums.length === 1) return nums[0];
-  for (let i = 0; i < nums.length; i += 2) {
-      if (nums[i] !== nums[i+1] || i === nums.length - 1) return nums[i]
-  }
-  
-  // WORST way (didn't see it's a sorted array)
-  let counts = {};
-
-  for (let i = 0; i < nums.length; i++) {
-      if (counts[nums[i]] === undefined) {
-          counts[nums[i]] = 1;
-      } else {
-          counts[nums[i]] += 1;
-      }
-  }
-
-  for (const [num, count] of Object.entries(counts)) if (count === 1) return num;
-};
-
 
 // 53. Maximum Subarray
 var maxSubArray = function(nums) {
@@ -440,20 +415,6 @@ var maxSubArray = function(nums) {
   }
 
   return maxSum;
-};
-
-// 392. Is Subsequence
-var isSubsequence = function(s, t) {
-  let sIndex = 0;
-
-  for (let i = 0; i < s.length; i++) {
-      if (!t.includes(s[i])) return false;
-      // if (t.indexOf(s[i]) <= sIndex) return false;
-      sIndex = t.indexOf(s[i])
-      t = t.slice(sIndex+1)
-  }
-
-  return true;
 };
 
 // 206. Reverse Linked List
@@ -546,6 +507,20 @@ var isAnagram = function(str1, str2) {
   return Object.values(count).every( num => num === 0);
 };
 
+// 392. Is Subsequence
+var isSubsequence = function(s, t) {
+  let sIndex = 0;
+
+  for (let i = 0; i < s.length; i++) {
+      if (!t.includes(s[i])) return false;
+      // if (t.indexOf(s[i]) <= sIndex) return false;
+      sIndex = t.indexOf(s[i])
+      t = t.slice(sIndex+1)
+  }
+
+  return true;
+};
+
 // 438. Find All Anagrams in a String
 var findAnagrams = function(s, p) {
   let res = [];
@@ -571,6 +546,31 @@ var findAnagrams = function(s, p) {
   }
 
   return res;
+};
+
+// 540. Single Element in a Sorted Array
+var singleNonDuplicate = function(nums) {
+  // binary sort way (good)
+  // to-do: look into bsort
+  
+  // worse way
+  if (nums.length === 1) return nums[0];
+  for (let i = 0; i < nums.length; i += 2) {
+      if (nums[i] !== nums[i+1] || i === nums.length - 1) return nums[i]
+  }
+  
+  // WORST way (didn't see it's a sorted array)
+  let counts = {};
+
+  for (let i = 0; i < nums.length; i++) {
+      if (counts[nums[i]] === undefined) {
+          counts[nums[i]] = 1;
+      } else {
+          counts[nums[i]] += 1;
+      }
+  }
+
+  for (const [num, count] of Object.entries(counts)) if (count === 1) return num;
 };
 
 // 704. Binary Search
