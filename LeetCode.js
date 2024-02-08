@@ -8,7 +8,26 @@ var twoSum = function(nums, target) {
   }
 }
 
-// Roman to Integer
+// 11. Container With Most Water
+var maxArea = function(height) {
+  let left = 0;
+  let right = height.length -1;
+  let area = 0;
+
+  while (left < right) {
+      let newArea = (right - left) * (Math.min(height[left], height[right]));
+      if (newArea > area) area = newArea;
+      if (height[left] > height[right]) {
+          right--
+      } else {
+          left++
+      }
+  }
+
+  return area;
+};
+
+// 13. Roman to Integer
 var romanToInt = function(s) {
   let numerals = {
     "I": 1,
@@ -31,8 +50,7 @@ var romanToInt = function(s) {
   return sum + numerals[s[s.length-1]];
 };
 
-
-// Longest Common Prefix
+// 14. Longest Common Prefix
 var longestCommonPrefix = function(strs) {
   // Input: strs = ["flower","flow","flight"]
   // strs[x[1]] strs[x,2]
@@ -51,15 +69,8 @@ var longestCommonPrefix = function(strs) {
   }
   return prefix;
 };
-// console.log(longestCommonPrefix(["",""]));
-// console.log(longestCommonPrefix(["ab", "a"]));
 
-
-// '' = true
-// make an object
-// if ([{, put a key of )]} into the object with value of their count
-// if )]}, then object[ closing ] -= 1
-// check if all object values = 0
+// 20. Valid Parentheses
 const validParentheses = (string) => {
   if (string === '') return true;
   let testObj = {
@@ -91,32 +102,6 @@ const validParentheses = (string) => {
 
   return Object.values(resObj).every(val => val === 0);
 }
-// console.log(validParentheses('()')) //true
-// console.log(validParentheses('()[]{}')) //true
-// console.log(validParentheses('(]')) //false
-// console.log(validParentheses('([)]')) //true
-// console.log(validParentheses('()[}')) // false
-
-
-// 11. Container With Most Water
-var maxArea = function(height) {
-  let left = 0;
-  let right = height.length -1;
-  let area = 0;
-
-  while (left < right) {
-      let newArea = (right - left) * (Math.min(height[left], height[right]));
-      if (newArea > area) area = newArea;
-      if (height[left] > height[right]) {
-          right--
-      } else {
-          left++
-      }
-  }
-
-  return area;
-};
-
 
 // 56. Merge Intervals
 var merge = function(intervals) {
