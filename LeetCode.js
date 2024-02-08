@@ -103,6 +103,39 @@ const validParentheses = (string) => {
   return Object.values(resObj).every(val => val === 0);
 }
 
+// 26. Remove Duplicates from Sorted Array
+var removeDuplicates = function(nums) {
+  for (let i = 0; i < nums.length - 1; i++) {
+      if (nums[i] === nums[i+1]) {
+          nums.splice(i, 1);
+          i--
+      }
+  }
+  return nums.length;
+};
+
+// 27. Remove Element
+var removeElement = function(nums, val) {
+  for (let i = 0; i < nums.length; i++) {
+      if (nums[i] === val) {
+          nums.splice(i, 1)
+          i--
+      }
+  }
+  return nums.length;
+};
+
+// 35. Search Insert Position
+var searchInsert = function(nums, target) {
+  if (nums[0] > target) return 0;
+  if (nums.includes(target)) return nums.indexOf(target);
+  if (nums[nums.length-1] < target) return nums.length;
+
+  for (let i = 1; i < nums.length; i++) {
+      if (nums[i] > target && nums[i-1] < target) return i;
+  }
+};
+
 // 56. Merge Intervals
 var merge = function(intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
@@ -123,6 +156,56 @@ var merge = function(intervals) {
   return res;
 };
 
+// 66. Plus One
+var plusOne = function(digits) {
+  digits[digits.length - 1] += 1;
+  for (let i = digits.length-1; i >= 0; i--) {
+      if (i === 0 && digits[i] >= 10) {
+          digits[i] = 0;
+          digits.unshift(1);
+      }
+      if (digits[i] >= 10) {
+          digits[i] = 0;
+          digits[i-1] += 1;
+      }
+  }
+
+  return digits;
+};
+
+// 69. Sqrt(x)
+var mySqrt = function(x) {
+  if (x === 0) return 0;
+  if (x < 4) return 1;
+  
+  let low = 1;
+  let high = Math.ceil(x/2);
+  let mid;
+
+  while (low <= high) {
+      mid = Math.floor((low + high) / 2);
+      if ((mid * mid) < x) {
+          low = mid + 1;
+      } else if ((mid * mid) > x) {
+          high = mid - 1;
+      } else {
+          return mid;
+      }
+  }
+  return high;
+};
+
+// 121. Best Time to Buy and Sell Stock
+var maxProfit = function(prices) {
+  let profit = 0;
+  let min = prices[0];
+
+  for (let i = 0; i < prices.length; i++) {
+      if (prices[i] < min) min = prices[i];
+      if (prices[i] - min > profit) profit = prices[i] - min;
+  }
+  return profit;
+};
 
 // 125. Valid Palindrome
 var isPalindrome = function(str) {
@@ -134,8 +217,6 @@ var isPalindrome = function(str) {
   }
   return true;
 };
-// console.log(isPalindrome("ab_a"));
-
 
 // 171. Excel Sheet Column Number
 var titleToNumber = function(columnTitle) {
@@ -179,96 +260,6 @@ var titleToNumber = function(columnTitle) {
 
   return num;
 };
-// console.log(titleToNumber("FXSHRXW")); // 2147483647
-
-
-// 121. Best Time to Buy and Sell Stock
-var maxProfit = function(prices) {
-  let profit = 0;
-  let min = prices[0];
-
-  for (let i = 0; i < prices.length; i++) {
-      if (prices[i] < min) min = prices[i];
-      if (prices[i] - min > profit) profit = prices[i] - min;
-  }
-  return profit;
-};
-
-
-// 26. Remove Duplicates from Sorted Array
-var removeDuplicates = function(nums) {
-  for (let i = 0; i < nums.length - 1; i++) {
-      if (nums[i] === nums[i+1]) {
-          nums.splice(i, 1);
-          i--
-      }
-  }
-  return nums.length;
-};
-
-
-// 27. Remove Element
-var removeElement = function(nums, val) {
-  for (let i = 0; i < nums.length; i++) {
-      if (nums[i] === val) {
-          nums.splice(i, 1)
-          i--
-      }
-  }
-  return nums.length;
-};
-
-
-// 35. Search Insert Position
-var searchInsert = function(nums, target) {
-  if (nums[0] > target) return 0;
-  if (nums.includes(target)) return nums.indexOf(target);
-  if (nums[nums.length-1] < target) return nums.length;
-
-  for (let i = 1; i < nums.length; i++) {
-      if (nums[i] > target && nums[i-1] < target) return i;
-  }
-};
-
-// 66. Plus One
-var plusOne = function(digits) {
-  digits[digits.length - 1] += 1;
-  for (let i = digits.length-1; i >= 0; i--) {
-      if (i === 0 && digits[i] >= 10) {
-          digits[i] = 0;
-          digits.unshift(1);
-      }
-      if (digits[i] >= 10) {
-          digits[i] = 0;
-          digits[i-1] += 1;
-      }
-  }
-
-  return digits;
-};
-
-// 69. Sqrt(x)
-var mySqrt = function(x) {
-  if (x === 0) return 0;
-  if (x < 4) return 1;
-  
-  let low = 1;
-  let high = Math.ceil(x/2);
-  let mid;
-
-  while (low <= high) {
-      mid = Math.floor((low + high) / 2);
-      if ((mid * mid) < x) {
-          low = mid + 1;
-      } else if ((mid * mid) > x) {
-          high = mid - 1;
-      } else {
-          return mid;
-      }
-  }
-  return high;
-};
-
 
 // ------------------------------------------------------------- //
 // need to account for when there's multiples of the same number 
