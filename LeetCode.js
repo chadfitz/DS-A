@@ -281,36 +281,6 @@ var titleToNumber = function(columnTitle) {
   return num;
 };
 
-// ------------------------------------------------------------- //
-// need to account for when there's multiples of the same number 
-// 1010. Pairs of Songs With Total Durations Divisible by 60
-var numPairsDivisibleBy60 = function(time) {
-  let count = 0;
-
-  let hash = {0: 0};
-  for (i = 0; i < time.length; i++) {
-      let complement = time[i] % 60;
-      if (time[i] % 60 === 0) {
-          hash[0] += 1;
-      } else {
-          if (hash[60 - complement] !== undefined) {
-              count += 1;
-          } else {
-              hash[complement] = i;
-          }
-      }
-  }
-
-  if (hash[0] > 1) {
-      return count + hash[0];
-  } else {
-      return count;
-  }
-};
-
-// ---------------------------------------------------------- //
-
-
 // 118. Pascal's Triangle
 var generate = function(numRows) {
   let res = [];
@@ -330,31 +300,23 @@ var generate = function(numRows) {
   return res;
 };
 
-// Isomorphic Strings
-// Overview: For two strings to be isomorphic, all occurrences of a character in string A can be replaced with another character to get string B. 
-// The order of the characters must be preserved. There must be one-to-one mapping for every char of string A to every char of string B.
-// paper and title would return true. egg and sad would return false. dgg and add would return true.
+// 205. Isomorphic Strings
+var isIsomorphic = function(s, t) {
+  if (s.length != t.length) return false;
 
-// if every instance of a letter in a is replaced with the same letter and equals b, return true
-// make an object keeping track of what I'm transforming the letters into
-// iterate through, if a[i] can be transformed into b[i], log the transformation in the object and transform it
+  let hashPairs = {};
 
-const isIsomorphic = (a, b) => {
-  if (a.length !== b.length) return false;
-  let transformed = {}
-
-  for (i = 0; i < a.length; i++) {
-    if (transformed[a[i]] === undefined) {
-      transformed[a[i]] = b[i];
-      // a[i] = b[i]
-    } else {
-      if (transformed[a[i]] && transformed[a[i]] !== b[i]) return false;
-    }
+  for (let i = 0; i < s.length; i++) {
+      if (hashPairs["s" + s[i]] === undefined && hashPairs["t" + t[i]] === undefined) {
+          hashPairs["s" + s[i]] = t[i];
+          hashPairs["t" + t[i]] = s[i];
+      } else if (hashPairs["s" + s[i]] != t[i] || hashPairs["t" + t[i] != s[i]]) {
+          return false;
+      }
   }
 
-  // return a === b;
   return true;
-}
+};
 
 // 206. Reverse Linked List
 var reverseList = function(head) {
@@ -570,6 +532,31 @@ var maxIncreaseKeepingSkyline = function(grid) {
   }
 
   return res;
+};
+
+// 1010. Pairs of Songs With Total Durations Divisible by 60
+var numPairsDivisibleBy60 = function(time) {
+  let count = 0;
+
+  let hash = {0: 0};
+  for (i = 0; i < time.length; i++) {
+      let complement = time[i] % 60;
+      if (time[i] % 60 === 0) {
+          hash[0] += 1;
+      } else {
+          if (hash[60 - complement] !== undefined) {
+              count += 1;
+          } else {
+              hash[complement] = i;
+          }
+      }
+  }
+
+  if (hash[0] > 1) {
+      return count + hash[0];
+  } else {
+      return count;
+  }
 };
 
 // 1047. Remove All Adjacent Duplicates In String
