@@ -657,20 +657,3 @@ var findBall = function(grid) {
   return res;
 };
 
-// 2161.Partition Array According to Given Pivot
-var pivotArray = function(nums, pivot) {
-  let lessThan = [];
-  let equal = []
-  let greaterThan = [];
-
-  for (let i = 0; i < nums.length; i++) {
-      if (nums[i] < pivot) {
-          lessThan.push(nums[i]);
-      } else if (nums[i] === pivot) {
-          equal.push(nums[i])
-      } else if (nums[i] > pivot) {
-          greaterThan.push(nums[i])
-      }
-  }
-  return lessThan.concat(equal, greaterThan)
-};
