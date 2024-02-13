@@ -215,6 +215,28 @@ var mySqrt = function(x) {
   return high;
 };
 
+// 73. Set Matrix Zeroes
+var setZeroes = function(matrix) {
+  let row = new Set();
+  let column = new Set();
+
+  for (let r = 0; r < matrix.length; r++) {
+      for (let c = 0; c < matrix[0].length; c++) {
+          if (matrix[r][c] === 0) {
+              row.add(r);
+              column.add(c);
+          }
+      }
+  }
+
+  for (let r = 0; r < matrix.length; r++) {
+      for (let c = 0; c < matrix[0].length; c++) {
+          if (row.has(r) || column.has(c)) matrix[r][c] = 0;
+      }
+  }
+};
+
+
 // 121. Best Time to Buy and Sell Stock
 var maxProfit = function(prices) {
   let profit = 0;
