@@ -496,7 +496,37 @@ var singleNonDuplicate = function(nums) {
   for (const [num, count] of Object.entries(counts)) if (count === 1) return num;
 };
 
-
+// 704. Binary Search
+var search = function(nums, target) {
+  // recursion
+    // const mp = Math.floor(nums.length / 2);
+    // if (nums[mp] === target) return mp;
+    // if (!nums.length) return -1;
+  
+    // if (target < nums[mp]) {
+    //     return search(nums.slice(0, mp), target);
+    // } else {
+    //     const res = search(nums.slice(mp+1, nums.length), target)
+    //     if (res === -1) return -1;
+    //     return res + mp + 1
+    // }
+  
+  // 2 pointer
+    let left = 0;
+    let right = nums.length - 1;
+  
+    while (left <= right) {
+        const mp = Math.floor((left + right) / 2);
+        if (target < nums[mp]) {
+            right = mp - 1
+        } else if (target > nums[mp]) {
+            left = mp + 1
+        } else {
+            return mp
+        }
+    }
+    return -1;
+};
 
 // 807. Max Increase to Keep City Skyline
 var maxIncreaseKeepingSkyline = function(grid) {
