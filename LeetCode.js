@@ -674,22 +674,3 @@ var pivotArray = function(nums, pivot) {
   }
   return lessThan.concat(equal, greaterThan)
 };
-
-// 704. Binary Search
-var search = function(nums, target) {
-    // 2 pointer
-      let left = 0;
-      let right = nums.length - 1;
-    
-      while (left <= right) {
-          const mp = Math.floor((left + right) / 2);
-          if (target < nums[mp]) {
-              right = mp - 1
-          } else if (target > nums[mp]) {
-              left = mp + 1
-          } else {
-              return mp
-          }
-      }
-      return -1;
-  };
