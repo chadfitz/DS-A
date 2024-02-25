@@ -430,6 +430,28 @@ var isAnagram = function(str1, str2) {
   return Object.values(count).every( num => num === 0);
 };
 
+// 347. Top K Frequent Elements
+var topKFrequent = function(nums, k) {
+    const map = new Map();
+    const bucket = [];
+    const res = [];
+
+    for (let num of nums) {
+        map.set(num, (map.get(num) || 0) + 1);
+    }
+
+    for (let [num, count] of map) {
+        bucket[count] = (bucket[count] || new Set()).add(num);
+    }
+
+    for (let i = bucket.length - 1; i >= 0; i--) {
+        if (bucket[i]) res.push(...bucket[i]);
+        if (res.length === k) break;
+    }
+
+    return res;
+};
+
 // 392. Is Subsequence
 var isSubsequence = function(s, t) {
   let sIndex = 0;
