@@ -164,3 +164,29 @@ var reverseList = function(head) {
 
     return prev;
 };
+
+// 3. Longest Substring Without Repeating Characters
+var lengthOfLongestSubstring = function(s) {
+    if (s.length <= 1) return s.length;
+
+    let start = 0;
+    let i = 0;
+    const subStrSet = new Set();
+    let longest = 0;
+
+    while (i < s.length) {
+        if (!subStrSet.has(s[i])) {
+            subStrSet.add(s[i]);
+            if (i === s.length - 1 && subStrSet.size > longest) longest = subStrSet.size;
+            i++;
+        } else {
+            if (subStrSet.size > longest) longest = subStrSet.size;
+            subStrSet.clear();
+            start++;
+            i = start;
+        }
+
+    }
+
+    return longest;
+}
