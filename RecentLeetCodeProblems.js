@@ -190,3 +190,28 @@ var lengthOfLongestSubstring = function(s) {
 
     return longest;
 }
+
+// 3. Longest Substring Without Repeating Characters
+var lengthOfLongestSubstring = function(s) {
+    if (s.length <= 1) return s.length;
+
+    let start = 0;
+    let i = start;
+    const set = new Set();
+    let longest = 0;
+
+    while (i < s.length) {
+        if (!set.has(s[i])) {
+            set.add(s[i]);
+            i++;
+            if (i === s.length && set.size > longest) longest = set.size;
+        } else {
+            if (set.size > longest) longest = set.size;
+            set.clear();
+            start++;
+            i = start;
+        }
+    }
+
+    return longest;
+}
