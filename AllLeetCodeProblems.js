@@ -262,6 +262,24 @@ var setZeroes = function(matrix) {
   }
 };
 
+// 118. Pascal's Triangle
+var generate = function(numRows) {
+    let res = [];
+  
+    for (let i = 0; i < numRows; i++) {
+        let subArr = [];
+        for (let j = 0; j <= i; j++) {
+            if (j === 0 || j === i) {
+                subArr.push([1])
+            } else {
+                subArr.push(parseInt(res[i-1][j-1]) + parseInt(res[i-1][j]))
+            }
+        }
+        res.push(subArr);
+    }
+  
+    return res;
+};
 
 // 121. Best Time to Buy and Sell Stock
 var maxProfit = function(prices) {
@@ -327,25 +345,6 @@ var titleToNumber = function(columnTitle) {
   }
 
   return num;
-};
-
-// 118. Pascal's Triangle
-var generate = function(numRows) {
-  let res = [];
-
-  for (let i = 0; i < numRows; i++) {
-      let subArr = [];
-      for (let j = 0; j <= i; j++) {
-          if (j === 0 || j === i) {
-              subArr.push([1])
-          } else {
-              subArr.push(parseInt(res[i-1][j-1]) + parseInt(res[i-1][j]))
-          }
-      }
-      res.push(subArr);
-  }
-
-  return res;
 };
 
 // 205. Isomorphic Strings
