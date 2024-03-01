@@ -304,6 +304,21 @@ var isPalindrome = function(str) {
   return true;
 };
 
+// 167. Two Sum II - Input Array is Sorted
+var twoSum = function(numbers, target) {
+    let pojo = {};
+
+    for (let i = 0; i < numbers.length; i++) {
+        if (pojo[numbers[i]] === undefined) {
+            pojo[target - numbers[i]] = i + 1;
+        } else {
+            return [pojo[numbers[i]], i + 1];
+        }
+    }
+
+    return [];
+};
+
 // 171. Excel Sheet Column Number
 var titleToNumber = function(columnTitle) {
   const numValues = {
