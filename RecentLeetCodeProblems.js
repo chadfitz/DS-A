@@ -237,3 +237,25 @@ var topKFrequent = function(nums, k) {
  
     return result;
  };
+
+// 347. Top K Frequent Elements
+var topKFrequent = function(nums, k) {
+    let map = new Map();
+    let bucket = [];
+    let res = [];
+ 
+    for (let num of nums) {
+        map.set(num, (map.get(num) || 0) + 1);
+    }
+ 
+    for (let [num, count] of map) {
+        bucket[count] = (bucket[count] || new Set()).add(num);
+    }
+ 
+    for (let i = bucket.length; i > 0; i--) {
+        if (bucket[i]) res.push(...bucket[i]);
+        if (k === res.length) break;
+    }
+ 
+    return res;
+ };
