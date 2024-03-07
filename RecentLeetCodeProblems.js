@@ -313,3 +313,25 @@ var findAnagrams = function(s, p) {
   
     return res;
 };
+
+// 347. Top K Frequent Elements
+var topKFrequent = function(nums, k) {
+    const counts = new Map();
+ 
+    for (let num of nums) {
+        counts.set(num, (counts.get(num) || 0) + 1);
+    }
+ 
+    const sorted = [...counts].sort((a, b) => b[1] - a[1]);
+    let result = [];
+    for (let pair of sorted) {
+        if (k > 0) {
+            result.push(pair[0]);
+            k--;
+        } else {
+            break;
+        }
+    }
+ 
+    return result;
+};
