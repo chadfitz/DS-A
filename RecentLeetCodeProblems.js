@@ -362,3 +362,19 @@ var findAnagrams = function(s, p) {
 
     return res;
 };
+
+// 66. Plus One
+var plusOne = function(digits) {
+    digits[digits.length - 1]++;
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (i !== 0 && digits[i] >= 10) {
+            digits[i] = 0;
+            digits[i - 1]++;
+        } else if (i === 0 && digits[i] >= 10) {
+            digits[i] = 0;
+            digits.unshift(1);
+        }
+    }
+
+    return digits;
+};
