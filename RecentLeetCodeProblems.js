@@ -378,3 +378,30 @@ var plusOne = function(digits) {
 
     return digits;
 };
+
+// 438. Find All anagrams in a String
+var findAnagrams = function(s, p) {
+    let counts = {};
+    let res = [];
+
+    for (let char of p) {
+        counts[char] = (counts[char] || 0) + 1;
+    }
+
+    let start = 0;
+    let end = 0;
+
+    while (end < s.length) {
+        if (counts[s[end]] > 0) {
+            counts[s[end]]--;
+            if ((end - start + 1) === p.length) res.push(start);
+            end++;
+        } else {
+            if (counts[s[start]] !== undefined) counts[s[start]]++;
+            start++;
+            if (start > end) end = start;
+        }
+    }
+
+    return res;
+};
