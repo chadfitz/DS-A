@@ -431,3 +431,32 @@ var lengthOfLongestSubstring = function(s) {
 
     return longest;
 }
+
+// 567. Permutation in String
+var checkInclusion = function(s1, s2) {
+    let counts = {};
+    for (let char of s1) {
+        counts[char] = (counts[char] || 0) + 1;
+    }
+
+    let start = 0;
+    let end = 0;
+    let goalLength = s1.length;
+    while (end < s2.length) {
+        if (counts[s2[end]] > 0) {
+            goalLength--;
+            counts[s2[end]]--;
+            if (counts[s2[end]] === 0 && goalLength === 0) return true;
+            end++;
+        } else {
+            if (counts[s2[start]] !== undefined) {
+                counts[s2[start]]++;
+                goalLength++;
+            }
+            start++;
+            if (start > end) end = start;
+        }
+    }
+
+    return false;
+};
