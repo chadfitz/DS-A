@@ -460,3 +460,23 @@ var checkInclusion = function(s1, s2) {
 
     return false;
 };
+
+// 56. Merge intervals
+var merge = function(intervals) {
+    let sortedIntervals = intervals.sort((a,b) => a[0] - b[0]);
+    const res = [sortedIntervals[0]];
+    let resIndex = 0;
+    let i = 1;
+    while (i < sortedIntervals.length) {
+        if (res[resIndex][1] >= sortedIntervals[i][0]) {
+            res[resIndex] = [res[resIndex][0], Math.max(res[resIndex][1], sortedIntervals[i][1])];
+            i++;
+        } else {
+            res.push(sortedIntervals[i]);
+            resIndex++;
+            i++;
+        } 
+    }
+
+    return res;
+};
