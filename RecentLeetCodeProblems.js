@@ -513,3 +513,29 @@ var merge = function(intervals) {
 
     return res;
 };
+
+// 438. Find All anagrams in a String
+var findAnagrams = function(s, p) {
+    const pCount = {};
+
+    for (let char of p) {
+        pCount[char] = (pCount[char] || 0) +1;
+    }
+
+    let start = 0;
+    let end = 0;
+    const res = [];
+    while (end < s.length) {
+        if (pCount[s[end]] > 0) {
+            pCount[s[end]]--;
+            if (pCount[s[end]] === 0 && end - start + 1 === p.length) res.push(start);
+            end++;
+        } else {
+            if (pCount[s[start]] !== undefined) pCount[s[start]]++;
+            start++;
+            if (start > end) end++;
+        }
+    }
+
+    return res;
+};
