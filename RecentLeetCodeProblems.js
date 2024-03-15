@@ -554,3 +554,29 @@ var reverseList = function(head) {
 
     return prev;
 };
+
+// 21. Merge Two Sorted Lists
+var mergeTwoLists = function(list1, list2) {
+    let res = new ListNode();
+    let current = res;
+
+    while (list1 && list2) {
+        if (list1.val < list2.val) {
+            current.next = list1;
+            list1 = list1.next;
+        } else {
+            current.next = list2;
+            list2 = list2.next
+        }
+        current = current.next;
+    }
+
+    if (list1) {
+        current.next = list1;
+    } else {
+        current.next = list2;
+    }
+
+    // console.log(JSON.stringify(res));
+    return res.next;
+};
