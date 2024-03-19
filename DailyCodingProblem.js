@@ -69,15 +69,27 @@ const numDecode = (message) => {
       if (letters[num] === undefined) {
         res++;
         letters[num] = 'true';
-        if (i < message.length - 1 && parseInt(message[i + 1]) <= 6) res++;
-
+      }
+      if (i < message.length - 1 && parseInt(message[i + 1]) <= 6) {
+        if (letters[parseInt(message[i] + message[i + 1])] === undefined) {
+          letters[parseInt(message[i] + message[i + 1])] = 'true'
+          res++;
+        }
       }
 
+    } else if (num === 1) {
+      if (letters[num] === undefined) {
+        letters[num] = 'true';
+        res++;
+      }
+      if (i < message.length - 1) {
+        if (letters[parseInt(message[i] + message[i + 1])] === undefined) {
+          letters[parseInt(message[i] + message[i + 1])] = true;
+          res++;
+        }
+      }
     }
-    if (num === 1) {
-      res++;
-      if (i < message.length - 1) res++;
-    }
+    console.log("letters: ", letters);
   }
 
   return res;
