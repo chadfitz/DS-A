@@ -53,6 +53,7 @@ const productExceptI = (nums) => {
 
 // You can assume that the messages are decodable. For example, '001' is not allowed.
 
+// **** not solved
 const numDecode = (message) => {
   const letters = {};
   let res = 0;
@@ -95,4 +96,45 @@ const numDecode = (message) => {
   return res;
 }
 
-console.log(numDecode('111'));
+// console.log(numDecode('111'));
+
+// -------------------------------------------------------------------------------------------------------
+// Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find the lowest positive integer that does not exist
+//  in the array. The array can contain duplicates and negative numbers as well.
+
+// For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
+
+// You can modify the input array in-place.
+const firstMissingPositive = (nums) => {
+  // we are finding the lowest positive integer, so the range of possible outcomes is 1 to nums.length
+  
+  // make all ints positive 
+  // (if they were negative set = nums.length since highest possible value is nums.length)
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] <= 0) nums[i] = nums.length;
+  }
+  
+  // set the int at index num - 1 to negative
+  // (num - 1 because lowest value is 1, not 0)
+  // use absolute value because we are changing the array in place
+  for (let i = 0; i < nums.length; i++) {
+    const num = Math.abs(nums[i]);
+    if (num < nums.length) nums[num - 1] = -Math.abs(nums[num - 1]);
+  }
+
+  // if any index is positive, that index is the answer
+  // (that index + 1 because possible values start at 1, not 0, and we shoved in num - 1 before)
+  for (let i = 0; i < nums.length; i++) {
+      if (nums[i] > 0) {
+          return i + 1;
+      }
+  }
+
+  // If all indexes are positive, the lowest is nums.length
+  return nums.length;
+}
+
+// Example usage:
+console.log(firstMissingPositive([3, 4, -1, 1])); // Output: 2
+console.log(firstMissingPositive([1, 2, 0])); // Output: 3
+console.log(firstMissingPositive([4, 1, 3, 2, 6])); // Output: 5
