@@ -45,3 +45,42 @@ const productExceptI = (nums) => {
 }
 // console.log(productExceptI([1, 2, 3, 4, 5]));
 // console.log(productExceptI([3, 2, 1]));
+
+// -------------------------------------------------------------------------------------------------------
+// Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded.
+
+// For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'.
+
+// You can assume that the messages are decodable. For example, '001' is not allowed.
+
+const numDecode = (message) => {
+  const letters = {};
+  let res = 0;
+
+  for (let i = 0; i < message.length; i++) {
+    // console.log("parseInt(message[i]): ", parseInt(message[i]));
+    let num = parseInt(message[i]);
+    if (num > 2) {
+      if (letters[num] === undefined) {
+        res++;
+        letters[num] = 'true';
+      }
+    } else if (num === 2) {
+      if (letters[num] === undefined) {
+        res++;
+        letters[num] = 'true';
+        if (i < message.length - 1 && parseInt(message[i + 1]) <= 6) res++;
+
+      }
+
+    }
+    if (num === 1) {
+      res++;
+      if (i < message.length - 1) res++;
+    }
+  }
+
+  return res;
+}
+
+console.log(numDecode('111'));
