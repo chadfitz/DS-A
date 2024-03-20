@@ -606,3 +606,29 @@ var mergeTwoLists = function(list1, list2) {
     // console.log(JSON.stringify(res));
     return res.next;
 };
+
+// 567. Permutation in String
+var checkInclusion = function(s1, s2) {
+    if (s1.length > s2.length) return false;
+
+    const counts = {};
+    for (let char of s1) {
+        counts[char] = (counts[char] || 0) + 1;
+    }
+
+    let start = 0;
+    let end = 0;
+    while (end < s2.length) {
+        if (counts[s2[end]] > 0) {
+            counts[s2[end]]--;
+            if (end - start + 1 === s1.length) return true; 
+            end++;
+        } else {
+            if (counts[s2[start]] !== undefined) counts[s2[start]]++;
+            start++;
+            if (start > end) end = start;
+        }
+    }
+
+    return false;
+};
