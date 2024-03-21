@@ -135,9 +135,9 @@ const firstMissingPositive = (nums) => {
 }
 
 // Example usage:
-console.log(firstMissingPositive([3, 4, -1, 1])); // Output: 2
-console.log(firstMissingPositive([1, 2, 0])); // Output: 3
-console.log(firstMissingPositive([4, 1, 3, 2, 6])); // Output: 5
+// console.log(firstMissingPositive([3, 4, -1, 1])); // Output: 2
+// console.log(firstMissingPositive([1, 2, 0])); // Output: 3
+// console.log(firstMissingPositive([4, 1, 3, 2, 6])); // Output: 5
 
 // -------------------------------------------------------------------------------------------------------
 // Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.
@@ -154,13 +154,34 @@ console.log(firstMissingPositive([4, 1, 3, 2, 6])); // Output: 5
   // [2, 4, 3, 6] 10
   // [2, 4, 6, 3] 8
 const largestNonAdjacentSum = (nums) => {
-  let sum = 0;
+  let incl = 0; // Stores the maximum sum including the previous non-adjacent element
+  let excl = 0; // Stores the maximum sum excluding the previous non-adjacent element
+  let highest = -Infinity;
 
   for (let i = 0; i < nums.length; i++) {
+    console.log("nums[i]: ", nums[i]);
+    // Calculate the new inclusive sum by adding the current number and the exclusive sum of the previous element
+    let newIncl = excl + nums[i];
+    // Update the exclusive sum to be the maximum of previous inclusive and exclusive sums
+    excl = Math.max(incl, excl);
+    // Update the inclusive sum for the next iteration
+    incl = newIncl;
 
+    if (nums[i] > highest) highest = nums[i];
+    console.log("incl: ", incl);
+    console.log("excl: ", excl);
+    console.log("---------------");
   }
+
+  // Return the maximum of inclusive and exclusive sums
+  if (highest < 0) return highest;
+  return Math.max(incl, excl);
 }
 
-// console.log(largestNonAdjacentSum([2,4,6,2,5]));
+// console.log(largestNonAdjacentSum([2,4,6,2,5])); // 13
+// console.log(largestNonAdjacentSum([8, 1, 2, 6, 1, 5, 6])); // 20
+// console.log(largestNonAdjacentSum([-1, -3, -5, -2])); // -1
+// console.log(largestNonAdjacentSum([2, 4, 3, 6])); // 10
+// console.log(largestNonAdjacentSum([2, 4, 6, 3])); // 8
 // console.log(largestNonAdjacentSum([5,1,1,5]));
 // console.log(largestNonAdjacentSum([2,6,3,2,5]));
