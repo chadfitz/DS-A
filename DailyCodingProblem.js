@@ -157,10 +157,10 @@ const largestNonAdjacentSum = (nums) => {
   let sum = 0;
 
   for (let i = 0; i < nums.length; i++) {
-    
+
   }
 }
 
-console.log(largestNonAdjacentSum([2,4,6,2,5]));
-console.log(largestNonAdjacentSum([5,1,1,5]));
-console.log(largestNonAdjacentSum([2,6,3,2,5]));
+// console.log(largestNonAdjacentSum([2,4,6,2,5]));
+// console.log(largestNonAdjacentSum([5,1,1,5]));
+// console.log(largestNonAdjacentSum([2,6,3,2,5]));
