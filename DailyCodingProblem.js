@@ -138,3 +138,29 @@ const firstMissingPositive = (nums) => {
 console.log(firstMissingPositive([3, 4, -1, 1])); // Output: 2
 console.log(firstMissingPositive([1, 2, 0])); // Output: 3
 console.log(firstMissingPositive([4, 1, 3, 2, 6])); // Output: 5
+
+// -------------------------------------------------------------------------------------------------------
+// Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative.
+
+// For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.
+
+// Follow-up: Can you do this in O(N) time and constant space?
+
+// keep track of values and indices
+// edge cases:
+  // every value is negative
+
+  // [8, 1, 1, 6, 1, 5, 6] 20
+  // [2, 4, 3, 6] 10
+  // [2, 4, 6, 3] 8
+const largestNonAdjacentSum = (nums) => {
+  let sum = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    
+  }
+}
+
+console.log(largestNonAdjacentSum([2,4,6,2,5]));
+console.log(largestNonAdjacentSum([5,1,1,5]));
+console.log(largestNonAdjacentSum([2,6,3,2,5]));
