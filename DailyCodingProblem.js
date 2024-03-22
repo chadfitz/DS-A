@@ -185,3 +185,9 @@ const largestNonAdjacentSum = (nums) => {
 // console.log(largestNonAdjacentSum([2, 4, 6, 3])); // 8
 // console.log(largestNonAdjacentSum([5,1,1,5]));
 // console.log(largestNonAdjacentSum([2,6,3,2,5]));
+
+// -------------------------------------------------------------------------------------------------------
+// Implement a job scheduler which takes in a function f and an integer n, and calls f after n milliseconds.
+const jobScheduler = (f, n) {
+  setTimeout(f, n);
+}
