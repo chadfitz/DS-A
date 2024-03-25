@@ -701,3 +701,37 @@ var mergeTwoLists = function(list1, list2) {
 
     return res.next;
 };
+
+// 143. Reorder List
+var reorderList = function(head) {
+    // find the middle node
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    // reverse the second half
+    let current = slow.next;
+    let prev = null;
+    while (current) {
+        let nextPlaceholder = current.next;
+        current.next = prev;
+        prev = current;
+        current = nextPlaceholder;
+    }
+
+    // merge
+    slow.next = null;    
+    let front = head;
+    let back = prev;
+    while (front && back) {
+        let frontNext = front.next;
+        let backNext = back.next;
+        front.next = back;
+        back.next = frontNext;
+        front = frontNext;
+        back = backNext;
+    }
+};
