@@ -735,3 +735,34 @@ var reorderList = function(head) {
         back = backNext;
     }
 };
+
+// 143. Reorder List
+var reorderList = function(head) {
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    let prev = null;
+    let current = slow.next;
+    while (current) {
+        let nextPlaceholder = current.next;
+        current.next = prev;
+        prev = current;
+        current = nextPlaceholder;
+    }
+
+    slow.next = null;
+    let forward = head;
+    let backward = prev;
+    while (forward && backward) {
+        let forwardNext = forward.next;
+        let backwardNext = backward.next;
+        forward.next = backward;
+        backward.next = forwardNext;
+        forward = forwardNext;
+        backward = backwardNext;
+    }
+};
