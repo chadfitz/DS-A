@@ -241,8 +241,13 @@ const distinctSubstrings = (k, s) => {
 
   return longest;
 }
-console.log(distinctSubstrings(2, "abcba")); // 3
-console.log(distinctSubstrings(2, "abcbbab")); // 4
+// console.log(distinctSubstrings(2, "abcba")); // 3
+// console.log(distinctSubstrings(2, "abcbbab")); // 4
+
+// -------------------------------------------------------------------------------------------------------
+// The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
+
+// Hint: The basic equation of a circle is x2 + y2 = r2.
 
 
 
