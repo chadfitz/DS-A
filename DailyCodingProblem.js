@@ -217,3 +217,33 @@ const functionF = () => {console.log("fart")}
 // What if, instead of being able to climb 1 or 2 steps at a time, you could climb any number from a set of positive integers X? 
 // For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time.
 
+// -------------------------------------------------------------------------------------------------------
+// Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
+
+// For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
+const distinctSubstrings = (k, s) => {
+  const map = new Map();
+  let longest = 0;
+
+  let start = 0;
+  let end = 0;
+  while (end < s.length) {
+    if (map.size > k) {
+      map.set(s[start], map.get(s[start]) - 1);
+      if (map.get(s[start]) === 0) map.delete(s[start]);
+      start++;
+    } else {
+      map.set(s[end], (map.get(s[end]) || 0) + 1);
+      if (map.size <= k && end - start + 1 > longest) longest = end - start + 1;
+      end++;
+    }
+  }
+
+  return longest;
+}
+console.log(distinctSubstrings(2, "abcba")); // 3
+console.log(distinctSubstrings(2, "abcbbab")); // 4
+
+
+
+// -------------------------------------------------------------------------------------------------------
