@@ -766,3 +766,39 @@ var reorderList = function(head) {
         backward = backwardNext;
     }
 };
+
+// 143. Reorder List
+var reorderList = function(head) {
+    // find the mid node
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    // reverse the second half
+    let prev = null;
+    let current = slow.next;
+    while (current) {
+        let nextPlaceholder = current.next;
+        current.next = prev;
+        prev = current;
+        current = nextPlaceholder;
+    }
+
+    // finalize the separation of the two lists by cutting the first off at the midpoint
+    slow.next = null;
+
+    // merge the two lists
+    let front = head;
+    let back = prev;
+    while (front && back) {
+        let frontNext = front.next;
+        let backNext = back.next;
+        front.next = back;
+        back.next = frontNext;
+        back = backNext;
+        front = frontNext;
+    }
+};
