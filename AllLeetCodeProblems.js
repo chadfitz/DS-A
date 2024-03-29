@@ -645,6 +645,28 @@ var search = function(nums, target) {
     return -1;
 };
 
+// 739. Daily Temperatures
+var dailyTemperatures = function(temperatures) {
+    let stack = [];
+    let answer = [];
+
+    for (let i = temperatures.length - 1; i >= 0; i--) {
+        if (!stack.length) {
+            answer[i] = 0;
+        } else if (temperatures[i] < stack[stack.length - 1][0]) {
+            answer[i] = stack[stack.length - 1][1] - i;
+        }
+        while (stack.length && temperatures[i] >= stack[stack.length - 1][0]) {
+            stack.pop();
+            if (!stack.length) answer[i] = 0;
+            if (stack.length && temperatures[i] < stack[stack.length - 1][0]) answer[i] = stack[stack.length - 1][1] - i;
+        }
+        stack.push([temperatures[i], i])
+    }
+
+    return answer;
+};
+
 // 807. Max Increase to Keep City Skyline
 var maxIncreaseKeepingSkyline = function(grid) {
   let maxRow = {};
