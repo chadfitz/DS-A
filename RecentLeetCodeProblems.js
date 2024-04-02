@@ -824,3 +824,38 @@ var dailyTemperatures = function(temperatures) {
 
     return answer;
 };
+
+// 143. Reorder List
+var reorderList = function(head) {
+    // find the mid node
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    // reverse second half
+    let prev = null;
+    let current = slow.next;
+    while (current) {
+        let nextPlaceholder = current.next;
+        current.next = prev;
+        prev = current;
+        current = nextPlaceholder;
+    }
+
+    // finalize split of first half
+    slow.next = null;
+    //merge the two halves
+    let front = head;
+    let back = prev;
+    while (front && back) {
+        let frontNext = front.next;
+        let backNext = back.next;
+        front.next = back;
+        back.next = frontNext;
+        front = frontNext;
+        back = backNext;
+    }
+};
