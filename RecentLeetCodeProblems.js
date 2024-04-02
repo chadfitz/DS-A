@@ -859,3 +859,14 @@ var reorderList = function(head) {
         back = backNext;
     }
 };
+
+// 26. Remove Duplicates from Sorted Array
+var removeDuplicates = function(nums) {
+    for (let i = 0; i < nums.length - 1; i++) {
+        if (nums[i] === nums[i + 1]) {
+            // remove element in place at index, delete count
+            nums.splice(i, 1);
+            i--;
+        }
+    }
+};
