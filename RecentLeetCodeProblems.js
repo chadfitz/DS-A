@@ -917,3 +917,25 @@ var reorderList = function(head) {
         back = backNext;
     }
 };
+
+// 1700. Number of Students Unable to Eat Lunch
+var countStudents = function(students, sandwiches) {
+    let studentPrefs = {};
+    for (let pref of students) {
+        studentPrefs[pref] = (studentPrefs[pref]||0) + 1;
+    }
+
+    while (students.length > 0 && sandwiches.length > 0) {
+        if (studentPrefs[sandwiches[0]] === 0) break;
+
+        if (students[0] === sandwiches[0]) {
+            studentPrefs[students[0]]--;
+            students.shift();
+            sandwiches.shift();
+        } else {
+            students.push(students.shift());
+        }
+    }
+
+    return studentPrefs[0] + studentPrefs[1];
+};
