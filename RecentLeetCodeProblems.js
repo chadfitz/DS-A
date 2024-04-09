@@ -939,3 +939,19 @@ var countStudents = function(students, sandwiches) {
 
     return studentPrefs[0] + studentPrefs[1];
 };
+
+// 219. Contains Duplicate II
+var containsNearbyDuplicate = function(nums, k) {
+    if (nums.length <= 1 || k < 1) return false;
+
+    const map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        // can't just do if (map.get(nums[i])) because won't run if index is 0
+        if (map.get(nums[i]) !== undefined) {
+            if (i - map.get(nums[i]) <= k) return true;
+        }
+        map.set(nums[i], i);
+    }
+
+    return false;
+};
