@@ -970,3 +970,29 @@ var removeDuplicates = function(nums) {
 
     return left + 1;
 };
+
+// 438. Find All Anagrams in a String
+var findAnagrams = function(s, p) {
+    let counts = {};
+    
+    for (let char of p) {
+        counts[char] = (counts[char] || 0) + 1;
+    }
+
+    let indices = [];
+    let left = 0;
+    let right = 0;
+    while (right < s.length) {
+        if (counts[s[right]] > 0) {
+            counts[s[right]]--;
+            if (right - left + 1 === p.length) indices.push(left);
+            right++;
+        } else {
+            if (counts[s[left]] !== undefined) counts[s[left]]++;
+            left++;
+            if (left >= right) right = left;
+        }
+    }
+
+    return indices;
+};
