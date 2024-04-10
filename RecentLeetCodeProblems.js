@@ -955,3 +955,18 @@ var containsNearbyDuplicate = function(nums, k) {
 
     return false;
 };
+
+// 26. Remove Duplicates from Sorted Array
+var removeDuplicates = function(nums) {
+    if (nums.length === 0) return 0;
+
+    let left = 0;
+    for (let right = 1; right < nums.length; right++) {
+        if (nums[right] !== nums[left]) {
+            nums[left + 1] = nums[right];
+            left++;
+        }
+    }
+
+    return left + 1;
+};
