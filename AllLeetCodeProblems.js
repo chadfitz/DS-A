@@ -300,6 +300,20 @@ var setZeroes = function(matrix) {
   }
 };
 
+// 83. Remove Duplicates from Sorted List
+var deleteDuplicates = function(head) {
+    let current = head;
+    while (current && current.next) {
+        if (current.val === current.next.val) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+
+    return head;
+};
+
 // 118. Pascal's Triangle
 var generate = function(numRows) {
     let res = [];
