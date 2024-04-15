@@ -323,3 +323,39 @@ const isBalanced = (brackets) => {
 
   return stack.length === 0;
 }
+
+// -------------------------------------------------------------------------------------------------------
+// Run-length encoding is a fast and simple method of encoding strings. The basic idea is to represent repeated successive characters 
+// as a single count and character. For example, the string "AAAABBBCCDAA" would be encoded as "4A3B2C1D2A".
+
+// Implement run-length encoding and decoding. You can assume the string to be encoded have no digits and consists solely of 
+// alphabetic characters. You can assume the string to be decoded is valid.
+
+// 2 pointer
+  // first is the first occurrence of the letter
+  // second is the iterator
+// if string[i - 1] !== string[i], push in i - first then first = i
+// or if i = string.length - 1, push in i - first + 1;
+const encode = (string) => {
+  let encodedStr = "";
+
+  let first = 0;
+  for (let i = 1; i < string.length; i++) {
+    if (string[i] !== string[first]) {
+      encodedStr = encodedStr.concat(i - first, string[first]);
+      first = i;
+    }
+    if (i === string.length - 1) encodedStr = encodedStr.concat(i - first + 1, string[i]);
+  }
+
+  return encodedStr;
+}
+// console.log(encode("AAAABBBCCDAA")); // "4A3B2C1D2A"
+
+
+// -------------------------------------------------------------------------------------------------------
+// The edit distance between two strings refers to the minimum number of character insertions, deletions, and 
+// substitutions required to change one string to the other. For example, the edit distance between 
+// “kitten” and “sitting” is three: substitute the “k” for “s”, substitute the “e” for “i”, and append a “g”.
+
+// Given two strings, compute the edit distance between them.
