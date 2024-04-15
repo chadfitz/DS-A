@@ -352,6 +352,22 @@ const encode = (string) => {
 }
 // console.log(encode("AAAABBBCCDAA")); // "4A3B2C1D2A"
 
+const decode = (encodedString) => {
+  let decodedStr = "";
+  
+  let i = 0;
+  while (i < encodedString.length) {
+    let counter = parseInt(encodedString[i]);
+    while (counter > 0) {
+      decodedStr += encodedString[i + 1];
+      counter--;
+    }
+    i += 2;
+  }
+
+  return decodedStr;
+}
+// console.log(decode("4A3B2C1D2A")); // "AAAABBBCCDAA"
 
 // -------------------------------------------------------------------------------------------------------
 // The edit distance between two strings refers to the minimum number of character insertions, deletions, and 
