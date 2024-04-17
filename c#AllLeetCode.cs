@@ -58,3 +58,24 @@ public class Solution {
     return res;
     }
 }
+
+// 14. Longest Common Prefix
+public class Solution {
+    public string LongestCommonPrefix(string[] strs) {
+        string res = "";
+        for (int charI = 0; charI < strs[0].Length; charI++)
+        {
+            res += strs[0][charI];
+            for (int subArr = 0; subArr < strs.Length; subArr++)
+            {
+                if (charI >= strs[subArr].Length || strs[subArr][charI] != res[res.Length - 1])
+                {
+                    res = res.Remove(res.Length - 1);
+                    return res;
+                }
+            }
+        }
+
+        return res;
+    }
+}
