@@ -79,3 +79,29 @@ public class Solution {
         return res;
     }
 }
+
+// 20. Valid Parentheses
+public class Solution {
+    public bool IsValid(string s) {
+        Dictionary<char, char> parens = new Dictionary<char, char>
+        {
+            { '(', ')' },
+            { '[', ']' },
+            { '{', '}' }
+        };
+
+        Stack<char> myStack = new Stack<char>();
+        foreach (char paren in s)
+        {
+            if (parens.ContainsKey(paren)) 
+            {
+                myStack.Push(parens[paren]);
+            }
+            else
+            {
+                if (myStack.Count == 0 || myStack.Pop() != paren) return false;
+            }
+        }
+        return myStack.Count == 0;
+    }
+}
