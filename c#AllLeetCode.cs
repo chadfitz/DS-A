@@ -158,3 +158,19 @@ public class Solution {
     }
 }
 
+// 27. Remove Element
+public class Solution {
+    public int RemoveElement(int[] nums, int val) {
+        int notVal = 0;
+        foreach (int num in nums)
+        {
+            if (num != val)
+            {
+                nums[notVal] = num;
+                notVal++;
+            }
+        }
+        return notVal;
+    }
+}
+
