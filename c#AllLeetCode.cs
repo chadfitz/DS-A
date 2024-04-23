@@ -134,6 +134,27 @@ public class Solution {
     }
 }
 
+// 26. Remove Duplicates from Sorted Array
+public class Solution {
+    public int RemoveDuplicates(int[] nums) {
+        if (nums.Length == 0) return 0;
+        // 2 pointer:
+            // 1. unique element
+            // 2. iterator until nums[1] != nums[2]
+        int unique = 0;
+        // var to keep track of unique element count
+        int k = 1;
+        for (int i = 1; i < nums.Length; i++) 
+        {
+            if (nums[i] != nums[unique])
+            {
+                k++;
+                unique++;
+                nums[unique] = nums[i];
+            }
+        }
 
-
+        return k;
+    }
+}
 
