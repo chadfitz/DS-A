@@ -174,3 +174,16 @@ public class Solution {
     }
 }
 
+// 35. Search Insert Position
+
+
+// 58. Length of Last Word
+public class Solution {
+    public int LengthOfLastWord(string s) {
+        String newStr = s.Trim();
+        String[] words = newStr.Split(' ');
+
+        return words[words.Length - 1].Length;
+    }
+}
+
