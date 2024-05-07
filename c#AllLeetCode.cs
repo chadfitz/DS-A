@@ -191,4 +191,4 @@ public class Solution {
         return length;
     }
 }
-
+// can do it with string.Split(), show knowledge of that but also how to do it manually
