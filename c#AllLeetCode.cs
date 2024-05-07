@@ -180,10 +180,15 @@ public class Solution {
 // 58. Length of Last Word
 public class Solution {
     public int LengthOfLastWord(string s) {
-        String newStr = s.Trim();
-        String[] words = newStr.Split(' ');
+        String sTrim = s.Trim();
+        int length = 0;
+        for (int i = sTrim.Length - 1; i >= 0; i--)
+        {
+            if (sTrim[i] == ' ') break;
+            length++;
+        }
 
-        return words[words.Length - 1].Length;
+        return length;
     }
 }
 
