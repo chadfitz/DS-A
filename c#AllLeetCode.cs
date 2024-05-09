@@ -192,3 +192,28 @@ public class Solution {
     }
 }
 // can do it with string.Split(), show knowledge of that but also how to do it manually
+
+// 66. Plus One
+public class Solution {
+    public int[] PlusOne(int[] digits) {
+        int i = digits.Length - 1;
+        digits[i]++;
+
+        while (i >= 0 && digits[i] >= 10)
+        {
+            if (i > 0)
+            {
+                digits[i] = 0;
+                digits[i - 1]++;
+            }
+            else if (i == 0)
+            {
+                digits[i] = 0;
+                digits = new int[] {1}.Concat(digits).ToArray();
+            }
+            i--;
+        }
+
+        return digits;
+    }
+}
