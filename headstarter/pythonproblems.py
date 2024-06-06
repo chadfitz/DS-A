@@ -18,3 +18,23 @@ def sum78(nums):
       if num == 8: adding = True
   
   return result
+
+  # In this part of the session, you will be solving the following problem:
+# Given an array length 1 or more of ints, return the difference between the largest and smallest values in the array. 
+
+# biggest_diff([10, 3, 5, 6]) → 7
+# biggest_diff([7, 2, 10, 9]) → 8
+# biggest_diff([2, 10, 7, 2]) → 8
+
+def biggest_diff(nums):
+  if nums:
+  # in python, an empty list is considered False, so it is redundant to say if len(nums)
+    max_val = max(nums)
+    min_val = min(nums)
+
+    return max_val - min_val
+  else:
+    return 0
+  
+print(biggest_diff([1,2,10]))
+print(biggest_diff([]))
