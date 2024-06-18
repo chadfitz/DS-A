@@ -26,3 +26,26 @@ class Solution(object):
             result += strs[0][i]
 
         return result
+    
+#20. Valid Parentheses
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        parens = {
+            "(": ")",
+            "[": "]",
+            "{": "}",
+        }
+
+        stack = []
+        for char in s:
+            if parens.has_key(char):
+                stack.append(parens[char])
+            else:
+                if not stack or char != stack.pop(): return False
+        
+        # return len(stack) == 0
+        return not stack
