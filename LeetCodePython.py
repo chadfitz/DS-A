@@ -1,3 +1,18 @@
+# 1. Two Sum
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        dic = {}
+        for i in range(len(nums)):
+            if not dic.has_key(target - nums[i]):
+                dic[nums[i]] = i
+            else:
+                return [dic[target - nums[i]], i]
+
 # 9. Palindrome Number
 class Solution(object):
     def isPalindrome(self, x):
