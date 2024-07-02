@@ -50,3 +50,18 @@ class Solution {
         return res.toString();
     }
 }
+
+// 26. Remove Duplicates from Sorted Array
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int first = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[first - 1]) {
+                nums[first] = nums[i];
+                first++;
+            }
+        }
+        return first;
+    }
+}
