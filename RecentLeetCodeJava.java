@@ -65,3 +65,24 @@ class Solution {
         return first;
     }
 }
+
+// 11. Container With Most Water
+class Solution {
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int area = Math.min(height[left], height[right]) * (right - left);
+
+        while(left < right) {
+            if (height[left] <= height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+            if (Math.min(height[left], height[right]) * (right - left) > area) {
+                area = Math.min(height[left], height[right]) * (right - left);
+            }
+        }
+        return area;
+    }
+}
