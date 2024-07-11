@@ -86,3 +86,34 @@ class Solution {
         return area;
     }
 }
+
+// 28. Find the Index of the First Occurrence in a String
+class Solution {
+    public int strStr(String haystack, String needle) {
+        // 2 pointer:
+            // left is when haystack[i] == needle[0]
+            // right iterates until right-left = needle.length-1
+        // 2 cases:
+            // 1. right-left = needle.length-1 && haystack[right] == needle[length-1]
+                // return left
+            // 2. right == haystack.length && case 1 is false
+                // return -1
+        int left = 0;
+        int right = left;
+        while (right < haystack.length()) {
+            if (needle.charAt(0) == haystack.charAt(left)) {
+                if (right - left == needle.length() - 1 && haystack.charAt(right) == needle.charAt(needle.length() - 1)) return left;
+                if (haystack.charAt(right) == needle.charAt(right - left)) {
+                    right++;
+                } else {
+                    left++;
+                    right = left;
+                }
+            } else {
+                left++;
+                right = left;
+            }
+        }
+        return -1;
+    }
+}
